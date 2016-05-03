@@ -1,0 +1,6 @@
+<%= simple_form_for @user do |f| %>
+  <%= f.input :email, label_html: { class: 'user_email' } %>
+  <%= f.input :password, hint: false, error_html: { id: 'password_error' } %>
+  <%= f.input :password_confirmation, label: false %>
+  <%= f.button :submit %>
+<% end %>
