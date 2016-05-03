@@ -1,6 +1,4 @@
 <%= simple_form_for @user do |f| %>
-  <%= f.input :email, label_html: { class: 'user_email' } %>
-  <%= f.input :password, hint: false, error_html: { id: 'password_error' } %>
-  <%= f.input :password_confirmation, label: false %>
-  <%= f.button :submit %>
+  <%= render partial: 'contact_info', locals: { f: f } %>
+  <%= render partial: 'account_info', locals: { f: f } %>
 <% end %>
