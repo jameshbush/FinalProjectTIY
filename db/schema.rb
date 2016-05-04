@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160503204936) do
+ActiveRecord::Schema.define(version: 20160504000644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160503204936) do
   add_index "journeys", ["user_id"], name: "index_journeys_on_user_id", using: :btree
 
   create_table "quests", force: :cascade do |t|
-    t.string   "type"
+    t.string   "grail"
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false

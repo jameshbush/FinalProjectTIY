@@ -1,5 +1,5 @@
 class Quest < ActiveRecord::Base
-  validates :type, presence: true
-  self.inheritance_column = :_type_disabled
+
+  validates :grail, presence: true
   validates :description, presence: true
 end

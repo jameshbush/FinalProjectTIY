@@ -6,10 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# User.all.each{ |u| u.destroy! }
 Quest.all.each{ |q| q.destroy! }
 
-quests = { "happyness" =>  "Become 10x happier with daily smile practice",
-           "confidence" => "Become 10x more confidence with power poses",
-           "freedom" =>    "You choose the challenge" }
-quests.each { |q, d| Quest.create(type: q, description: d) }
+quests = { "happyness"  => "Become happier with daily smile practice",
+           "confidence" => "Become more confident with daily power poses",
+           "freedom"    => "You choose the challenge" }
+quests.each { |g, d| Quest.create(grail: g, description: d) }
