@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root    'application#home', as: :root
 
   get     'signup'    => 'users#new', as: :signup

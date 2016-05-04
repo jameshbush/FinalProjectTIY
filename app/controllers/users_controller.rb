@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:show]
 
@@ -18,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = require_user && current_user
+    @user = current_user
     render @user
   end
 
