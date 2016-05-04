@@ -1,0 +1,5 @@
+<%= simple_form_for :login, :url => login_create_path do |f| %>
+  <%= f.input :email, placeholder: 'email@google.com' %>
+  <%= f.input :password, placeholder: 'password' %>
+  <%= f.button :submit %>
+<% end %>

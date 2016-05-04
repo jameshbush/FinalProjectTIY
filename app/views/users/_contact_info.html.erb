@@ -1,0 +1,4 @@
+<%= f.input :email, placeholder: 'email@google.com' %>
+<%= f.input :phone, label_html: { class: 'user_phone' }, placeholder: 'US Phone #' %>
+<%= f.input :contact_pref, as: :radio_buttons,
+collection: ["Email", "Phone", "Opt-out"] %>
