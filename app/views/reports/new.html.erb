@@ -1,5 +1,6 @@
 <h2>How do you Feel?</h2>
 <%= simple_form_for [current_user, current_user.current_journey, @report] do |f| %>
   <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
+  <%= f.attachment_field :image %>
   <%= f.button :submit %>
 <% end %>

@@ -18,6 +18,8 @@ source 'https://rubygems.org'
   gem 'kaminari'
   gem 'bootstrap-kaminari-views'
   gem 'aws-sdk', '< 2.0'
+  gem "refile", require: "refile/rails"
+  gem "refile-mini_magick"
 
 
 group :production do
