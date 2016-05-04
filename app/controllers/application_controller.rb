@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-  helper_method :current_user, :logged_in?
+  helper_method :current_user, :logged_in?, :require_user
 
   def home
     render 'pages/home'
@@ -13,5 +13,9 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= session[:current_user_id] &&
       User.find_by_id(session[:current_user_id])
+  end
+
+  def require_user
+    redirect_to :root unless current_user
   end
 end
