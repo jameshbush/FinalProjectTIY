@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Quest.all.each{&:destroy!}
+Quest.all.each(&:destroy!)
 
 quests = { "happyness"  => "Become happier with daily smile practice",
            "confidence" => "Become more confident with daily power poses",
