@@ -20,12 +20,11 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:survey)
+    params.require(:report).permit(:survey, :image)
   end
 
   def find_day
     @report = current_user.current_journey.reports.find_or_initialize_by(
-      created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day
-    )
+    created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 end

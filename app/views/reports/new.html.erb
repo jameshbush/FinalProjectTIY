@@ -1,6 +1,13 @@
 <h2>How do you Feel?</h2>
+<ul>
+  <li>First, do the action for 2 minutes.</li>
+  <li>Second, take a picture.</li>
+  <li>Last, how do you feel from 1 to 10?</li>
+</ul>
+</p>
 <%= simple_form_for [current_user, current_user.current_journey, @report] do |f| %>
+  <%= f.attachment_field :image, as: :file %>
+  <%= image_tag attachment_url(@report, :image, :fill, 200, 200, format: "jpg") if @report.image %>
   <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
-  <%= f.attachment_field :image %>
   <%= f.button :submit %>
 <% end %>
