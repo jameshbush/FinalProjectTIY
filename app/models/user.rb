@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
 
   before_validation :format_phone
 
+  def current_journey
+    self.journeys.where(current: true).first
+  end
+
   private
 
   def format_phone

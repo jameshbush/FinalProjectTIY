@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'reports/controller'
+
   root    'application#home', as: :root
 
   get     'signup'    => 'users#new', as: :signup
@@ -10,4 +12,10 @@ Rails.application.routes.draw do
 
   get     'start'  => 'journeys#new', as: :journey_new
   post    'start'  => 'journeys#create', as: :journey_create
+
+  resources :users, only: [:new, :create, :show] do
+    resources :journeys, only: [:new, :create, :show] do
+      resources :reports, only: [:new, :create, :update]
+    end
+  end
 end
