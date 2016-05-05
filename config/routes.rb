@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get     'start'  => 'journeys#new', as: :journey_new
   post    'start'  => 'journeys#create', as: :journey_create
 
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :create, :edit, :update, :show] do
     resources :journeys, only: [:new, :create, :show] do
       resources :reports, only: [:new, :create, :update]
     end
