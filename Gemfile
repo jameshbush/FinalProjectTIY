@@ -17,9 +17,10 @@ source 'https://rubygems.org'
   gem 'paperclip'
   gem 'kaminari'
   gem 'bootstrap-kaminari-views'
-  gem 'aws-sdk', '< 2.0'
   gem "refile", require: "refile/rails"
+  gem 'aws-sdk', '~> 2.3'
   gem "refile-mini_magick"
+  gem "refile-s3"
 
 
 group :production do
