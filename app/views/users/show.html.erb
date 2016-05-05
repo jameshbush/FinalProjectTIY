@@ -4,3 +4,8 @@
   new_user_journey_report_path(current_user, current_user.current_journey),
   class: "btn btn-primary"
 %>
+
+<%= link_to "See your current journey",
+  user_journey_path(current_user, current_user.current_journey),
+  class: "btn btn-primary"
+%>

@@ -15,6 +15,10 @@ class JourneysController < ApplicationController
     end
   end
 
+  def show
+    @journey = current_user.current_journey
+  end
+
   private
 
   def reset_journeys
