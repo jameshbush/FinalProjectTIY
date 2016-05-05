@@ -1,5 +1,6 @@
 class ReportsController < ApplicationController
   before_action :find_day
+
   def new
   end
 

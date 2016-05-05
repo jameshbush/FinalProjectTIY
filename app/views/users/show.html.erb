@@ -1,3 +1,5 @@
+<h2><%= "#{@user.name}'s profile" %></h2>
+
 <%= link_to "Create Or Update Today's Report",
   new_user_journey_report_path(current_user, current_user.current_journey),
   class: "btn btn-primary"

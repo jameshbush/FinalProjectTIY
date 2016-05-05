@@ -13,10 +13,11 @@ class User < ActiveRecord::Base
                     uniqueness: true,
                     format: { with: EMAIL_REGEX }
 
-  validates :contact_pref, presence: true
   before_save { self.contact_pref.downcase! }
+  validates :contact_pref, presence: true
 
-  before_validation :format_phone
+  before_validation :format_phone, :format_name
+  validates :name, format: { without: /\s/ }
 
   def current_journey
     self.journeys.where(current: true).first
@@ -26,5 +27,9 @@ class User < ActiveRecord::Base
 
   def format_phone
     self.phone = phone.gsub(/\D/, '')
+  end
+
+  def format_name
+    self.name.downcase!
   end
 end
