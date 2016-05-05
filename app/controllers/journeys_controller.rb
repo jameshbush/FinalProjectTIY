@@ -17,6 +17,8 @@ class JourneysController < ApplicationController
 
   def show
     @journey = current_user.current_journey
+    @reports = @journey.reports
+    @chart_data = @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.survey } }.reduce({}, :merge)
   end
 
   private

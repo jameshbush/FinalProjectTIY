@@ -1,3 +1,5 @@
-<% @journey.reports.each do |report| %>
+<% @reports.each do |report| %>
   <%= image_tag attachment_url(report, :image, :fill, 300, 300, format: "jpg") if report.image %>
 <% end %>
+
+<%= line_chart @chart_data %>
