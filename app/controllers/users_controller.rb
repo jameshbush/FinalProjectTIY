@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:show]
+  before_action :get_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -17,10 +18,24 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+  end
+
+  def edit
+  end
+
+  def update
+    if @user.update(user_params)
+      redirect_to @user
+    else
+      render :edit
+    end
   end
 
   private
+
+  def get_user
+    @user = current_user
+  end
 
   def user_params
     params.require(:user).permit(
