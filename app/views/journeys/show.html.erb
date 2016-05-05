@@ -1,5 +1,7 @@
-<% @reports.each do |report| %>
-  <%= image_tag attachment_url(report, :image, :fill, 300, 300, format: "jpg") if report.image %>
-<% end %>
+<div class="row">
+  <% @reports.each do |report| %>
+    <%= image_tag attachment_url(report, :image, :fill, 140, 140, format: "jpg") if report.image %>
+  <% end %>
 
-<%= line_chart @chart_data %>
+  <%= line_chart @chart_data, colors: ["#6495ed", "#999"] %>
+</div>
