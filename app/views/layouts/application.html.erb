@@ -5,16 +5,6 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-
-  <!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
-  <!-- ^^ Just Bootstrap? -->
-
-  <link rel="stylesheet" href="//blueimp.github.io/Gallery/css/blueimp-gallery.min.css">
-  <!-- ^^ Makes images load in modal -->
-
-  <!-- <link rel="stylesheet" href="css/bootstrap-image-gallery.min.css"> -->
-  <!-- ^^ Added to asset pipeline. -->
-
 </head>
 <body>
   <%= render 'layouts/header' %>
@@ -69,17 +59,8 @@
       <ol class="indicator"></ol>
   </div>
 
-  <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-  <!-- ^^ Just jQuery? -->
-
-  <script src="//blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js"></script>
-  <!-- ^^ Launches AJAX lightbox.-->
-
-  <!-- <script src="js/bootstrap-image-gallery.min.js"></script> -->
-  <!-- ^^ Added to asset pipeline. Cool fade effects. -->
-
   <script>
-  $('#links a').onclick = function (event) {
+  document.getElementById('links').onclick = function (event) {
       event = event || window.event;
       var target = event.target || event.srcElement,
           link = target.src ? target.parentNode : target,

@@ -3,6 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .navbar-brand {
-  width: 55px;
-  height: 55px;
+  height: 67px;
+  width: 67px;
+  position: relative; /* Declared position allows for location changes */
+  top: -10px; /* Moves the image 2px closer to the top of the page */
 }
