@@ -5,7 +5,7 @@
   <li>Last, how do you feel from 1 to 10?</li>
 </ul>
 </p>
-<%= simple_form_for [current_user, current_user.current_journey, @report] do |f| %>
+<%= simple_form_for [current_user, active_journey, @report] do |f| %>
   <%= f.attachment_field :image, as: :file %>
   <%= image_tag attachment_url(@report, :image, :fill, 200, 200, format: "jpg") if @report.image %>
   <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
