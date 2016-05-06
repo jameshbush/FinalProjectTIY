@@ -6,7 +6,7 @@ source 'https://rubygems.org'
   gem 'uglifier',       '>= 1.3.0'
   gem 'sass-rails',     '~> 5.0'
   gem 'bootstrap-sass', '3.2.0.0'
-  gem 'coffee-rails',   '~> 4.1.0'
+  # gem 'coffee-rails',   '~> 4.1.0'
   gem 'jquery-rails'
   gem 'turbolinks'
   gem 'jbuilder',       '~> 2.0'
@@ -17,13 +17,14 @@ source 'https://rubygems.org'
   gem 'paperclip'
   gem 'kaminari'
   gem 'bootstrap-kaminari-views'
-  gem "refile", require: "refile/rails"
+  gem 'refile', require: 'refile/rails'
   gem 'aws-sdk', '~> 2.3'
-  gem "refile-mini_magick"
-  gem "refile-s3"
+  gem 'refile-mini_magick'
+  gem 'refile-s3'
   gem 'twilio-ruby', '~> 4.11.1'
-  gem "chartkick"
+  gem 'chartkick'
   gem 'groupdate'
+  gem 'rails-assets-blueimp-gallery', source: 'https://rails-assets.org'
 
 group :production do
   gem 'rails_12factor'

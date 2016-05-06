@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require blueimp-gallery
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
