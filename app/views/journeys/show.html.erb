@@ -1,3 +1,9 @@
-<% @journey.reports.each do |report| %>
-  <%= image_tag attachment_url(report, :image, :fill, 200, 200, format: "jpg") if report.image %>
-<% end %>
+<div id="links">
+  <% @reports.each do |report| %>
+    <% if report.image %>
+      <% img = attachment_url(report, :image, :fill, 140, 140, format: "jpg") %>
+      <%= link_to image_tag(img, title: report.created_at.to_s), img, data: { gallery: nil } %>
+    <% end %>
+  <% end %>
+</div>
+<%= line_chart @chart_data, colors: ["#6495ed", "#999"] %>

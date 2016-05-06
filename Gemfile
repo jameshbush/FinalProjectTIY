@@ -21,7 +21,9 @@ source 'https://rubygems.org'
   gem 'aws-sdk', '~> 2.3'
   gem "refile-mini_magick"
   gem "refile-s3"
-
+  gem 'twilio-ruby', '~> 4.11.1'
+  gem "chartkick"
+  gem 'groupdate'
 
 group :production do
   gem 'rails_12factor'

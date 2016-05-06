@@ -29,15 +29,20 @@ journey.save!
 # Create Reports
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 1, 12, 1, 0))
 report.image = File.open("lib/seed_imgs/may1.jpeg")
-report.survey = 5
+report.survey = 4
 report.save!
 
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 2, 12, 1, 0))
 report.image = File.open("lib/seed_imgs/may2.jpeg")
-report.survey = 6
+report.survey = 5
 report.save!
 
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 3, 12, 1, 0))
 report.image = File.open("lib/seed_imgs/may3.jpeg")
-report.survey = 7
+report.survey = 6
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 4, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may4.jpeg")
+report.survey = 6
 report.save!
