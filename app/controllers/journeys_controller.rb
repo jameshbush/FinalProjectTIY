@@ -16,8 +16,7 @@ class JourneysController < ApplicationController
   end
 
   def show
-    @journey = active_journey
-    @reports = @journey.reports
+    @reports = active_journey.reports
     @survey_data = @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.survey } }.reduce({}, :merge)
   end
 

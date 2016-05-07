@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   end
 
   def active_journey
-    current_user.current_journey
+    @active_journey ||= current_user.current_journey
   end
 
   def require_user
