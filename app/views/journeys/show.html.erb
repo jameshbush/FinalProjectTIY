@@ -1,3 +1,9 @@
+<h1 class="text-center">Your Happyness Journey</h1>
+
+<h2 class="text-center">Happyness Over Time</h2>
+<%= line_chart @survey_data, colors: ["#6495ed", "#999"] %>
+
+<h2 class="text-center">Pictures of Happyness</h2>
 <div id="links">
   <% @reports.each do |report| %>
     <% if report.image %>
@@ -7,6 +13,5 @@
     <% end %>
   <% end %>
 </div>
-<%= line_chart @chart_data, colors: ["#6495ed", "#999"] %>
 
 <%= render 'layouts/lightbox' %>
