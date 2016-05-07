@@ -1,13 +1,27 @@
-<h2>How do you Feel?</h2>
-<ul>
-  <li>First, do the action for 2 minutes.</li>
-  <li>Second, take a picture.</li>
-  <li>Last, how do you feel from 1 to 10?</li>
-</ul>
+<div class="row">
+  <div class="col-md-12">
+    <h2 class="text-center">How do you Feel?</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <ul>
+      <li><h3>First, do the action for 2 minutes.</h3></li>
+      <li><h3>Second, take a picture.</h3></li>
+      <li><h3>Third, how do you feel from 1 to 10?</h3></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <%= simple_form_for [current_user, active_journey, @report] do |f| %>
+      <%= f.attachment_field :image, as: :file %>
+      <div class="upload-img">
+        <%= image_tag attachment_url( @report, :image, :fill, 200, 200, format: "jpg") if @report.image %>
+      </div>
+      <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
+      <%= f.button :submit %>
+    <% end %>
+  </div>
+</div>
 </p>
-<%= simple_form_for [current_user, active_journey, @report] do |f| %>
-  <%= f.attachment_field :image, as: :file %>
-  <%= image_tag attachment_url(@report, :image, :fill, 200, 200, format: "jpg") if @report.image %>
-  <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
-  <%= f.button :submit %>
-<% end %>
