@@ -6,12 +6,12 @@ class ReportsController < ApplicationController
 
   def create
     @report.update_attributes(report_params)
-    redirect_to user_show_path
+    redirect_to user_journey_path
   end
 
   def update
     @report.update_attributes(report_params)
-    redirect_to user_show_path
+    redirect_to user_journey_path
   end
 
   private
