@@ -5,16 +5,12 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report.survey = params[:report][:survey]
-    @report.image  = params[:report][:image]
-    @report.save!
+    @report.update_attributes(report_params)
     redirect_to user_show_path
   end
 
   def update
-    @report.survey = params[:report][:survey]
-    @report.image  = params[:report][:image]
-    @report.save!
+    @report.update_attributes(report_params)
     redirect_to user_show_path
   end
 
