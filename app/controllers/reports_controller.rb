@@ -5,13 +5,19 @@ class ReportsController < ApplicationController
   end
 
   def create
-    @report.update_attributes(report_params)
-    redirect_to user_journey_path
+    if @report.update_attributes(report_params)
+      redirect_to user_journey_path
+    else
+      render :create
+    end
   end
 
   def update
-    @report.update_attributes(report_params)
-    redirect_to user_journey_path
+    if @report.update_attributes(report_params)
+      redirect_to user_journey_path
+    else
+      render :update
+    end
   end
 
   private
