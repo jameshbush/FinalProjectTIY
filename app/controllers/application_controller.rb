@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   include LoginsHelper
   include ReportsHelper
   include JourneysHelper
+  include UsersHelper
 
   def home
     render 'pages/home'

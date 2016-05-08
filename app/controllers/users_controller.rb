@@ -46,11 +46,6 @@ class UsersController < ApplicationController
     )
   end
 
-  def correct_user
-    @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user == @user
-  end
-
   def dude_wheres_my_record
     redirect_to root_url
   end
