@@ -1,5 +1,7 @@
 class ReportsController < ApplicationController
   before_action :find_day
+  before_action :correct_user_id
+  rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def new
   end
