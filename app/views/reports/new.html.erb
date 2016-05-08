@@ -16,15 +16,14 @@
   <div class="col-md-12">
     <%= simple_form_for [current_user, active_journey, @report] do |f| %>
       <%= f.attachment_field :image, as: :file %>
-        <% if @report.image %>
+      <% if @report.image %>
         <div class="upload-img">
           <h4><%= "Overwrite current image?" %></h4>
           <%= image_tag attachment_url( @report, :image, :fill, 200, 200, format: "jpg") %>
         </div>
-        <% end %>
+      <% end %>
       <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
       <%= f.button :submit %>
     <% end %>
   </div>
 </div>
-</p>
