@@ -1,7 +1,14 @@
 <h1 class="text-center">Your Happyness Journey</h1>
 
 <h2 class="text-center">Happyness Over Time</h2>
-<%= line_chart @survey_data, colors: ["#6495ed", "#999"], width: "100%", height: "400px", label: "Happyness" %>
+<%= line_chart @survey_data,
+  colors: ["#6495ed", "#999"],
+  width: "100%", height: "20em",
+  label: "Happyness",
+  min: 0, max: 10,
+  xtitle: "Time", ytitle: "Happyness",
+  discrete: true
+%>
 
 <h2 class="text-center">Pictures of Happyness</h2>
 <div id="links">
