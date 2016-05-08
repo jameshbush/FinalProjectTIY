@@ -45,8 +45,4 @@ class UsersController < ApplicationController
       :password, :password_confirmation, :password_digest
     )
   end
-
-  def dude_wheres_my_record
-    redirect_to root_url
-  end
 end
