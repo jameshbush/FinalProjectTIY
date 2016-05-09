@@ -11,7 +11,7 @@ class JourneysController < ApplicationController
     if current_user.quests << quest
       reset_journeys
       set_journey
-      redirect_to user_show_path
+      redirect_to user_path(current_user)
     else
       render :new
     end

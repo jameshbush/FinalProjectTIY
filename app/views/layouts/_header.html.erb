@@ -40,8 +40,10 @@
             <ul class="dropdown-menu">
               <li><a href="<%= user_path(current_user) %>">Show</a></li>
               <li><%= link_to "Edit", edit_user_path(current_user) %></li>
-              <li><%= link_to "Current Journey",
-                user_journey_path(current_user, active_journey) %>
+              <% if current_user.has_current_journey? %>
+                <li><%= link_to "Current Journey",
+                  user_journey_path(current_user, active_journey) %>
+              <% end %>
               </li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
