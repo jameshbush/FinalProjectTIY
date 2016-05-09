@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
   before_action :disallow_user, only: [:new, :create]
-  before_action :require_user,  only: [:show]
-  before_action :get_user, only: [:show, :edit, :update]
+  before_action :require_user,  only: [:show, :edit, :update]
+  before_action :get_user,      only: [:show, :edit, :update]
+  before_action :correct_user,  only: [:show, :edit, :update]
+  rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def new
     @user = User.new

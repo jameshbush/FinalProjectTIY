@@ -1,5 +1,7 @@
 class JourneysController < ApplicationController
   before_action :require_user
+  before_action :correct_user_id,  only: [:show, :edit, :update]
+  rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def new
   end

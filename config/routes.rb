@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root    'application#home', as: :root
 
   get     'signup'    => 'users#new', as: :signup
-  get     'dashboard' => 'users#show', as: :user_show
+  # get     'dashboard' => 'users#show', as: :user_show
 
   get     'login'  => 'logins#new', as: :login
   post    'login'  => 'logins#create', as: :login_create
