@@ -10,7 +10,11 @@ class LoginsController < ApplicationController
     @user = User.find_by(email: params[:login][:email])
     if @user && @user.authenticate(params[:login][:password])
       session[:current_user_id] = @user.id
-      redirect_to user_path(current_user)
+      if @user.has_current_journey?
+        redirect_to user_path(current_user)
+      else
+        redirect_to journey_create_path
+      end
     else
       render :new
     end
