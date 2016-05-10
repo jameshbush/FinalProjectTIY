@@ -12,12 +12,12 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: EMAIL_REGEX }
+  require 'phone'
+  before_validation :format_phone, :format_name
+  validates :name, format: { without: /\s/ }
 
   before_save { self.contact_pref.downcase! }
   validates :contact_pref, presence: true
-
-  before_validation :format_phone, :format_name
-  validates :name, format: { without: /\s/ }
 
   def self.has_current_journey
     joins(:journeys).where("journeys.current = ?", true)
@@ -55,7 +55,8 @@ class User < ActiveRecord::Base
   private
 
   def format_phone
-    self.phone = phone.gsub(/\D/, '')
+    Phoner::Phone.default_country_code = '1'
+    self.phone = Phoner::Phone.parse self.phone
   end
 
   def format_name

@@ -24,6 +24,7 @@ source 'https://rubygems.org'
   gem 'chartkick'
   gem 'groupdate'
   gem 'rails-assets-blueimp-gallery', source: 'https://rails-assets.org'
+  gem 'phone', '~> 1.2', '>= 1.2.3'
 
 group :production do
   gem 'rails_12factor'

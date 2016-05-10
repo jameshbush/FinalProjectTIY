@@ -7,14 +7,11 @@ def send_message(phone_number, alert_message)
 
   message = @client.account.messages.create(
     :from => @twilio_number,
-    :to => "+1" + phone_number,
+    :to => phone_number,
     :body => alert_message,
-    # US phone numbers can make use of an image as well.
-    # :media_url => image_url
   )
   puts message.to
 end
-
 
 task remind: :environment do
   @users_to_contact = User.has_current_journey.prefer_phone_scope
