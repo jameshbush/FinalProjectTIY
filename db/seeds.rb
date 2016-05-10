@@ -26,7 +26,10 @@ journey = user.journeys.last
 journey.current = true
 journey.save!
 
+
 # Create Reports
+user.current_journey.reports.each { |report| report.delete }
+
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 1, 12, 1, 0))
 report.image = File.open("lib/seed_imgs/may1.jpeg")
 report.survey = 4
@@ -45,4 +48,34 @@ report.save!
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 4, 12, 1, 0))
 report.image = File.open("lib/seed_imgs/may4.jpeg")
 report.survey = 6
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 5, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may5.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 6, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may6.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 7, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may7.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 8, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may8.jpeg")
+report.survey = 6
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 9, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may9.jpeg")
+report.survey = 8
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 10, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may10.jpeg")
+report.survey = 7
 report.save!
