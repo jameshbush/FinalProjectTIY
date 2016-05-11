@@ -16,4 +16,5 @@ Rails.application.routes.draw do
       resources :reports, only: [:new, :create, :update]
     end
   end
+  resources :phone_verifications, only: [:new, :create]
 end
