@@ -52,11 +52,15 @@ class User < ActiveRecord::Base
     journeys.select { |j| j.current == "true" }.count > 0
   end
 
+  def unamericanized_cell
+    cellphone.gsub("+1", "")
+  end
+
   private
 
   def format_phone
     Phoner::Phone.default_country_code = '1'
-    self.phone = Phoner::Phone.parse self.phone
+    self.cellphone = Phoner::Phone.parse self.cellphone
   end
 
   def format_name

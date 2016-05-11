@@ -25,6 +25,7 @@ source 'https://rubygems.org'
   gem 'groupdate'
   gem 'rails-assets-blueimp-gallery', source: 'https://rails-assets.org'
   gem 'phone', '~> 1.2', '>= 1.2.3'
+  gem 'authy'
 
 group :production do
   gem 'rails_12factor'

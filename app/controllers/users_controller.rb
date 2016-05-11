@@ -13,7 +13,11 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:current_user_id] = @user.id
-      redirect_to :journey_new
+      if @user.contact_pref == "phone"
+        register_authy
+      else
+        redirect_to :journey_new
+      end
     else
       render :new
     end
@@ -41,8 +45,33 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :email, :phone, :contact_pref, :name,
+      :email, :cellphone, :contact_pref, :name,
       :password, :password_confirmation, :password_digest
     )
+  end
+
+  def register_authy
+    authy = Authy::API.register_user(:email => current_user.email, :cellphone => current_user.unamericanized_cell, :country_code => "1")
+
+    if authy.ok?
+      current_user.update_attribute(:authy_id, authy.id) # this will give you the user authy id to store it in your database
+      send_token_id
+    else
+      authy.errors # this will return an error hash
+      flash["error"] = authy.errors.inspect
+      render :new
+    end
+  end
+
+  def send_token_id
+    response = Authy::API.request_sms(:id => current_user.authy_id)
+
+    if response.ok?
+      redirect_to new_phone_verification_path
+    else
+      response.errors
+      flash["error"] = response.errors.inspect
+      render :new
+    end
   end
 end

@@ -15,5 +15,5 @@ end
 
 task remind: :environment do
   @users_to_contact = User.has_current_journey.prefer_phone_scope
-  @users_to_contact.each{ |user| send_message(user.phone, notification) }
+  @users_to_contact.each{ |user| send_message(user.cellphone, notification) }
 end
