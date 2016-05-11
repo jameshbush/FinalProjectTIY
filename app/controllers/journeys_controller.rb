@@ -4,6 +4,7 @@ class JourneysController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def new
+    @journey = current_user.journeys.new
   end
 
   def create
@@ -11,8 +12,10 @@ class JourneysController < ApplicationController
     if current_user.quests << quest
       reset_journeys
       set_journey
+      flash[:success] = "New journey, '#{current_user.grail}' started"
       redirect_to user_path(current_user)
     else
+      flash[:warning] = "Please select a journey"
       render :new
     end
   end

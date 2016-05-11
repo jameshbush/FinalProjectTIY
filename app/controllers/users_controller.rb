@@ -16,9 +16,11 @@ class UsersController < ApplicationController
       if @user.contact_pref == "phone"
         register_authy
       else
+        flash[:success] = "New user #{current_user.name} created"
         redirect_to :journey_new
       end
     else
+      flash.now[:warning] = "Could not save account. Please see #{ "error".pluralize(@user.errors.count) } below"
       render :new
     end
   end
@@ -31,8 +33,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:success] = "User #{current_user.name} updated"
       redirect_to @user
     else
+      flash.now[:warning] = "Could not save account. Please see #{ "error".pluralize(@user.errors.count) } below"
       render :edit
     end
   end
@@ -58,7 +62,7 @@ class UsersController < ApplicationController
       send_token_id
     else
       authy.errors # this will return an error hash
-      flash["error"] = authy.errors.inspect
+      flash[:warning] = authy.errors.inspect
       render :new
     end
   end
@@ -67,6 +71,7 @@ class UsersController < ApplicationController
     response = Authy::API.request_sms(:id => current_user.authy_id)
 
     if response.ok?
+      flash[:success] = "User '#{current_user.name}' created"
       redirect_to new_phone_verification_path
     else
       response.errors
