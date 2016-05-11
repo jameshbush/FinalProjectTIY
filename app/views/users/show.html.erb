@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <h1 class="display-3"><%= "#{@user.name}'s profile" %></h1>
-  <p class="lead"><%= "You are on the #{@user.current_journey.quest.grail} track!"%></p>
+  <p class="lead"><%= "You are on the #{current_user.grail.capitalize} track!"%></p>
   <hr class="m-y-2">
   <p class="lead">
     <%= link_to report_due? ? "Create Today's Report" : "Update Today's Report",

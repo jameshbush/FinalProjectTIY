@@ -32,7 +32,7 @@ class User < ActiveRecord::Base
   end
 
   scope :prefer_phone_scope, -> { where(contact_pref: "phone") }
-  scope :prefer_email_scope, -> { where(contact_pref: "email")}
+  scope :prefer_email_scope, -> { where(contact_pref: "email") }
 
   def current_journey
     possible = self.journeys.where(current: true).first
@@ -44,12 +44,16 @@ class User < ActiveRecord::Base
     end
   end
 
+  def grail
+    current_journey.quest.grail if current_journey
+  end
+
   def report_due?
     !current_journey.reports.find_by(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
   def has_current_journey?
-    journeys.select { |j| j.current == "true" }.count > 0
+    journeys.select { |j| j.current == true }.count > 0
   end
 
   def unamericanized_cell

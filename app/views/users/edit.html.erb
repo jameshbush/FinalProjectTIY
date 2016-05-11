@@ -1,3 +1,4 @@
+<%#= @user.errors.full_messages.inspect %>
 <%= simple_form_for @user do |f| %>
   <%= render partial: 'contact_info', locals: { f: f } %>
   <%= render partial: 'account_info', locals: { f: f } %>
