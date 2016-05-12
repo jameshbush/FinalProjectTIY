@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :journeys
+  has_many :journeys, dependent: :destroy
   has_many :quests, through: :journeys
 
   # Password
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   require 'phone'
   before_validation :format_cellphone
   validates_presence_of :cellphone, if: lambda { contact_pref == 'phone' }
-  validates :name, format: { without: /\s/ }
+  validates :cellphone, uniqueness: :true
 
   # Contact Preference
   before_save { self.contact_pref.downcase! }
@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
 
   # Name
   before_validation :format_name
+  validates :name, format: { without: /\s/ }
 
   def self.has_current_journey
     joins(:journeys).where("journeys.current = ?", true)

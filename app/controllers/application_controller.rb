@@ -14,7 +14,8 @@ class ApplicationController < ActionController::Base
   end
 
   def dude_wheres_my_record
-    redirect_to current_user
+    redirect_to current_user if params[:current_user_id]
+    render nothing: true     if params["From"]
   end
 
   def require_quest
