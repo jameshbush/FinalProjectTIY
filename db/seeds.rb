@@ -16,7 +16,7 @@ quests.each { |g, d| Quest.create(grail: g, description: d) } if Quest.count < 1
 user = User.find_by(name: "james")
 unless user
   user = User.create(name: "james", email: "james@example.com",
-                     contact_pref: "phone", phone: "555-555-5555",
+                     contact_pref: "phone", cellphone: "555-555-5555",
                      password: "123123", password_confirmation: "123123")
 end
 

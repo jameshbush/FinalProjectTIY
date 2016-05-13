@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   root    'application#home', as: :root
 
   get     'signup'    => 'users#new', as: :signup
-  # get     'dashboard' => 'users#show', as: :user_show
 
   get     'login'  => 'logins#new', as: :login
   post    'login'  => 'logins#create', as: :login_create
@@ -10,6 +9,8 @@ Rails.application.routes.draw do
 
   get     'start'  => 'journeys#new', as: :journey_new
   post    'start'  => 'journeys#create', as: :journey_create
+
+  post    'receive_sms'   => 'reports#create_from_sms'
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
     resources :journeys, only: [:new, :create, :show] do

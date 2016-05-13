@@ -1,6 +1,7 @@
 class ReportsController < ApplicationController
   before_action :find_day
-  before_action :correct_user_id
+  before_action :correct_user_id, except: [:create_from_sms]
+  skip_before_filter :verify_authenticity_token, :require_cellphone, :require_quest, only: [:create_from_sms]
   rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def new
@@ -20,6 +21,28 @@ class ReportsController < ApplicationController
     else
       render :update
     end
+  end
+
+  def create_from_sms
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    @twilio_number = ENV['TWILIO_NUMBER']
+    @report.image = params["MediaUrl0"] if params["MediaUrl0"]
+    @report.survey = params["Body"] unless params["Body"].empty?
+
+    if @report.save
+      @client.messages.create(
+        from: @twilio_number,
+        to: current_user.cellphone,
+        body: 'We hear ya!'
+      )
+    else
+      @client.messages.create(
+        from: @twilio_number,
+        to: current_user.cellphone,
+        body: "Didn't get that."
+      )
+    end
+    render nothing: true
   end
 
   private
