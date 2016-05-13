@@ -26,14 +26,16 @@ class ReportsController < ApplicationController
   def create_from_sms
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     @twilio_number = ENV['TWILIO_NUMBER']
-    @report.image = params["MediaUrl0"] if params["MediaUrl0"]
-    @report.survey = params["Body"] unless params["Body"].empty?
+    img = params['MediaUrl0']
+    txt = params["Body"]
+    @report.image = open(params["MediaUrl0"], allow_redirections: :all) if img
+    @report.survey = params["Body"] unless txt.empty?
 
     if @report.save
       @client.messages.create(
         from: @twilio_number,
         to: current_user.cellphone,
-        body: 'We hear ya!'
+        body: "We got the#{' img' if img}#{' &' if(img && txt)}#{' survey' unless txt.empty?}."
       )
     else
       @client.messages.create(

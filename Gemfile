@@ -26,6 +26,7 @@ source 'https://rubygems.org'
   gem 'rails-assets-blueimp-gallery', source: 'https://rails-assets.org'
   gem 'phone', '~> 1.2', '>= 1.2.3'
   gem 'authy'
+  gem 'open_uri_redirections'
 
 group :production do
   gem 'rails_12factor'
