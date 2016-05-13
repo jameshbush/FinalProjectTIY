@@ -15,6 +15,9 @@ class UsersController < ApplicationController
       session[:current_user_id] = @user.id
       if @user.contact_pref == "phone"
         register_authy
+      elsif @user.contact_pref == "email"
+        UserNotifier.send_signup_email(@user).deliver_now
+        redirect_to(:journey_new, notice: 'User created')
       else
         flash[:success] = "New user #{current_user.name} created"
         redirect_to :journey_new

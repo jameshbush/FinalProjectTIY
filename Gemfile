@@ -27,6 +27,7 @@ source 'https://rubygems.org'
   gem 'phone', '~> 1.2', '>= 1.2.3'
   gem 'authy'
   gem 'open_uri_redirections'
+  gem 'sendgrid', '~> 1.2', '>= 1.2.4'
 
 group :production do
   gem 'rails_12factor'
