@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   post    'receive_sms'   => 'reports#create_from_sms'
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
+    member do
+      get :confirm_email
+    end
     resources :journeys, only: [:new, :create, :show] do
       resources :reports, only: [:new, :create, :update]
     end

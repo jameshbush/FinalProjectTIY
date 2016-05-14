@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  skip_before_action :require_email_confirmation, only: [:new, :create]
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:show, :edit, :update]
   before_action :get_user,      only: [:show, :edit, :update]
@@ -16,8 +17,10 @@ class UsersController < ApplicationController
       if @user.contact_pref == "phone"
         register_authy
       elsif @user.contact_pref == "email"
-        UserNotifier.send_signup_email(@user).deliver_now
-        redirect_to(:journey_new, notice: 'User created')
+        # UserNotifier.send_signup_email(@user).deliver_now
+        UserNotifier.registration_confirmation(@user).deliver_now
+        flash[:success] = "New user #{current_user.name} created please check your email #{@user.email} and click link."
+        redirect_to(:root, notice: 'User created')
       else
         flash[:success] = "New user #{current_user.name} created"
         redirect_to :journey_new
@@ -41,6 +44,20 @@ class UsersController < ApplicationController
     else
       flash.now[:warning] = "Could not save account. Please see #{ "error".pluralize(@user.errors.count) } below"
       render :edit
+    end
+  end
+
+  def confirm_email
+    user = User.find_by_confirm_token(params[:id])
+    if user
+      user.email_activate
+      session[:current_user_id] = user.id
+      flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
+      You are signed in."
+      redirect_to root_url
+    else
+      flash[:error] = "Sorry. User does not exist"
+      redirect_to root_url
     end
   end
 

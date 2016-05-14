@@ -2,6 +2,7 @@ class LoginsController < ApplicationController
 
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:distroy]
+  skip_before_action :require_email_confirmation, only: [:new, :create]
 
   def new
   end
@@ -9,14 +10,17 @@ class LoginsController < ApplicationController
   def create
     @user = User.find_by(email: params[:login][:email])
     if @user && @user.authenticate(params[:login][:password])
-      session[:current_user_id] = @user.id
-      if @user.has_current_journey?
-        redirect_to user_path(current_user)
+      if user.email_confirmed
+        session[:current_user_id] = @user.id
+        flash[:success] = "You logged in!"
+        render :root
       else
-        redirect_to journey_create_path
+        flash[:error] = "Please activate your account."
+        render :new
       end
     else
-      render :new
+      flash[:error] = "Email or password wrong."
+      redirect_to :root
     end
   end
 

@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :dude_wheres_my_record
+  before_action :require_email_confirmation, except: [:home, :new, :create]
   before_action :require_cellphone, except: [:new, :create, :edit, :update, :destroy, :home]
   before_action :require_quest, except: [:new, :create, :edit, :update, :destroy, :home]
 
@@ -19,16 +20,23 @@ class ApplicationController < ActionController::Base
   end
 
   def require_quest
-    if current_user.current_journey.nil?
+    if current_user && current_user.current_journey.nil?
       flash[:warning] = "Please select a quest."
       redirect_to new_user_journey_path(current_user)
     end
   end
 
   def require_cellphone
-    if current_user.contact_pref == "phone" && current_user.phone_verified.nil?
+    if current_user && current_user.contact_pref == "phone" && current_user.phone_verified.nil?
       flash[:warning] = "We need to verify your cellphone number."
       register_authy
+    end
+  end
+
+  def require_email_confirmation
+    if current_user.contact_pref == "email" && current_user.email_verified.nil?
+      flash[:warning] = "We sent you an email to verify your account."
+      confirm_email
     end
   end
 end

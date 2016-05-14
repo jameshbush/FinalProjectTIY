@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :journeys, dependent: :destroy
   has_many :quests, through: :journeys
+  before_create :confirmation_token
 
   # Password
   has_secure_password
@@ -71,6 +72,12 @@ class User < ActiveRecord::Base
     cellphone.gsub("+1", "") if self.cellphone
   end
 
+  def email_activate
+    self.email_verified = true
+    self.confirm_token = nil
+    save! validate: false
+  end
+
   private
 
   def format_cellphone
@@ -80,5 +87,11 @@ class User < ActiveRecord::Base
 
   def format_name
     self.name.downcase!
+  end
+
+  def confirmation_token
+    if self.confirm_token.blank?
+      self.confirm_token = SecureRandom.urlsafe_base64.to_s
+    end
   end
 end
