@@ -54,11 +54,10 @@ class UsersController < ApplicationController
       session[:current_user_id] = user.id
       flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       You are signed in."
-      redirect_to root_url
     else
       flash[:error] = "Sorry. User does not exist"
-      redirect_to root_url
     end
+    redirect_to root_url
   end
 
   private
