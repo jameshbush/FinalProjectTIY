@@ -36,6 +36,7 @@ end
 group :development, :test do
   gem 'byebug'
   gem 'better_errors'
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
 end
 
 group :development do
