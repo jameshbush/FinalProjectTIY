@@ -9,12 +9,12 @@ class LoginsController < ApplicationController
   def create
     @user = User.find_by(email: params[:login][:email])
     if @user && @user.authenticate(params[:login][:password])
-      if user.email_confirmed
+      if @user.email_verified
         session[:current_user_id] = @user.id
         flash[:success] = "You logged in!"
         render :root
       else
-        flash[:error] = "Please activate your account."
+        flash[:warning] = "Please confirm your email account."
         render :new
       end
     else
