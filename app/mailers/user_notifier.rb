@@ -13,4 +13,10 @@ class UserNotifier < ActionMailer::Base
     mail( :to => user.email,
           :subject => 'Registration Confirmation' )
   end
+
+  def reminder_email(user)
+    @user = user
+    mail(to: user.email,
+         subject: "Remember to practice!")
+  end
 end
