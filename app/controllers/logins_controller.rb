@@ -1,8 +1,7 @@
 class LoginsController < ApplicationController
-
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:distroy]
-  skip_before_action :require_email_confirmation, only: [:new, :create]
+  skip_before_action :require_email_confirmation
 
   def new
   end
