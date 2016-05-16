@@ -13,7 +13,13 @@ def send_message(phone_number, alert_message)
   puts message.to
 end
 
+def send_email(user)
+  UserNotifier.reminder_email(user).deliver_now
+end
+
 task remind: :environment do
   @users_to_contact = User.has_current_journey.prefer_phone_scope
   @users_to_contact.each{ |user| send_message(user.cellphone, notification) }
+  @users_to_contact = User.has_current_journey.prefer_email_scope
+  @users_to_contact.each{ |user| send_email(user) }
 end
