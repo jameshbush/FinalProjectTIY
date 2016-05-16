@@ -12,7 +12,7 @@ class LoginsController < ApplicationController
       if @user.email_verified
         session[:current_user_id] = @user.id
         flash[:success] = "You logged in!"
-        render :root
+        redirect_back_or @user
       else
         flash[:warning] = "Please confirm your email account."
         render :new

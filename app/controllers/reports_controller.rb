@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :require_user
   before_action :find_day
   before_action :correct_user_id, except: [:create_from_sms]
   skip_before_filter :verify_authenticity_token, :require_cellphone, :require_quest, only: [:create_from_sms]
