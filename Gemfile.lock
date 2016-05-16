@@ -82,8 +82,14 @@ GEM
       thor (~> 0.14)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    griddler (1.3.1)
+      htmlentities
+      rails (>= 3.2.0)
+    griddler-sendgrid (0.0.1)
+      griddler
     groupdate (2.5.3)
       activesupport (>= 3)
+    htmlentities (4.3.4)
     httpclient (2.8.0)
     i18n (0.7.0)
     jbuilder (2.4.1)
@@ -243,6 +249,8 @@ DEPENDENCIES
   byebug
   chartkick
   figaro
+  griddler (~> 1.3, >= 1.3.1)
+  griddler-sendgrid
   groupdate
   jbuilder (~> 2.0)
   jquery-rails
