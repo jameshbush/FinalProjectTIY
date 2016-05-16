@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_email_confirmation, only: [:new, :create]
+  skip_before_action :require_email_confirmation, only: [:new, :create, :confirm_email]
+  skip_before_action :require_quest,              only: [:new, :create, :confirm_email]
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:show, :edit, :update]
   before_action :get_user,      only: [:show, :edit, :update]
@@ -17,7 +18,6 @@ class UsersController < ApplicationController
       if @user.contact_pref == "phone"
         register_authy
       elsif @user.contact_pref == "email"
-        # UserNotifier.send_signup_email(@user).deliver_now
         UserNotifier.registration_confirmation(@user).deliver_now
         flash[:success] = "New user #{current_user.name} created please check your email #{@user.email} and click link."
         redirect_to(:root, notice: 'User created')
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
         redirect_to :journey_new
       end
     else
-      flash.now[:warning] = "Could not save account. Please see #{ "error".pluralize(@user.errors.count) } below"
+      flash.now[:warning] = "Could not save account. Please see #{"error".pluralize(@user.errors.count)} below"
       render :new
     end
   end
@@ -42,16 +42,15 @@ class UsersController < ApplicationController
       flash[:success] = "User #{current_user.name} updated"
       redirect_to @user
     else
-      flash.now[:warning] = "Could not save account. Please see #{ "error".pluralize(@user.errors.count) } below"
+      flash.now[:warning] = "Could not save account. Please see #{"error".pluralize(@user.errors.count)} below"
       render :edit
     end
   end
 
   def confirm_email
-    user = User.find_by_confirm_token(params[:id])
-    if user
-      user.email_activate
-      session[:current_user_id] = user.id
+    if current_user
+      current_user.email_activate
+      session[:current_user_id] = current_user.id
       flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
       You are signed in."
     else

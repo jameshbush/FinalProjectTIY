@@ -8,6 +8,8 @@ module LoginsHelper
       @current_user ||= User.find_by_id(session[:current_user_id])
     elsif params["From"]
       @current_user ||= User.find_by(cellphone: params["From"])
+    elsif params["action"] == "confirm_email"
+      @current_user ||= User.find_by(confirm_token: params[:id])
     end
   end
 
