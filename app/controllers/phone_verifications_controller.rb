@@ -7,8 +7,9 @@ class PhoneVerificationsController < ApplicationController
     response = Authy::API.verify(:id => current_user.authy_id, :token => params[:token][:token])
 
     if response.ok?
-      current_user.phone_verified = true
-      current_user.save!
+      current_user.update_attribute(:phone_verified, true)
+      # current_user.phone_verified = true
+      # current_user.save!
       flash[:success] = "Phone number #{current_user.cellphone} was verified."
       redirect_to user_path(current_user)
     else
