@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
   end
 
   def current_report
-    current_journey.reports.find_or_initialize_by(
+    @current_report ||= current_journey.reports.find_or_initialize_by(
       created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
 
   def report_due?
     !current_journey.reports.find_by(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
+
+  def photo_due?
+    current_report.image.nil?
   end
 
   def has_current_journey?

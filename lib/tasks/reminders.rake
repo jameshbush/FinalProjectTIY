@@ -23,3 +23,14 @@ task remind: :environment do
   @users_to_contact = User.has_current_journey.prefer_email_scope
   @users_to_contact.each{ |user| send_email(user) }
 end
+
+task reprimand: :environment do
+  User.all.each do |user|
+    # if user.report_due? || user.photo_due?
+    #   File.open("#{Rails.root}/app/assets/images/break.png", "rb") do |file|
+    #     user.current_report.image = file
+    #   end
+    user.current_report.save!
+    # end
+  end
+end
