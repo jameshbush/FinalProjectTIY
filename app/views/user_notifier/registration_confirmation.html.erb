@@ -4,14 +4,11 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>Thanks for signing up, <%= @user.name %>!</h1>
-    <p>Thanks for joining and have a great day! Now sign in and do
-awesome things!</p>
+    <h3>Hello, <%= @user.name %>!</h3>
+    <p>Thanks for joining. I hope you enjoy my habit development app.</p>
 
-    Hi <%= @user.name %>,
-
-    Thanks for registering! To confirm your registration click the URL below.
-
-    <%= confirm_email_user_url(@user.confirm_token) %>
+    <p>To confirm your registration click the URL below.</p>
+    
+    <p><%= confirm_email_user_url(@user.confirm_token) %></p>
   </body>
 </html>
