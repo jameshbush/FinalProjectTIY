@@ -55,7 +55,6 @@ class ReportsController < ApplicationController
   end
 
   def find_day
-    @report = current_user.current_journey.reports.find_or_initialize_by(
-    created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    @report = current_user.current_report
   end
 end
