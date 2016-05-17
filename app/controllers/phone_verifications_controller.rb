@@ -8,8 +8,6 @@ class PhoneVerificationsController < ApplicationController
 
     if response.ok?
       current_user.update_attribute(:phone_verified, true)
-      # current_user.phone_verified = true
-      # current_user.save!
       flash[:success] = "Phone number #{current_user.cellphone} was verified."
       redirect_to user_path(current_user)
     else
