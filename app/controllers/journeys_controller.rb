@@ -10,8 +10,7 @@ class JourneysController < ApplicationController
   def create
     quest = Quest.find_by(grail: params[:journey][:quest])
     if current_user.quests << quest
-      reset_journeys
-      set_journey
+      current_user.new_journey
       flash[:success] = "New journey, '#{current_user.grail}' started"
       redirect_to user_path(current_user)
     else
@@ -26,18 +25,6 @@ class JourneysController < ApplicationController
   end
 
   private
-
-  def reset_journeys
-    current_user.journeys.each do |q|
-      q.current = false
-      q.save!
-    end
-  end
-
-  def set_journey
-    current_user.journeys.last.current = true
-    current_user.journeys.last.save!
-  end
 
   def journey_params
     params.require(:quest).premit(:user_id, :quest_id)
