@@ -14,8 +14,8 @@
 <div id="links">
   <% @reports.each do |report| %>
     <% if report.image %>
-      <% img_thumb = attachment_url(report, :image, :fill, 140, 140, format: "jpg") %>
-      <% img_large = attachment_url(report, :image, :fill, 500, 500, format: "jpg") %>
+      <% img_thumb = attachment_url(report, :image, :fill, 140, 140, format: "jpg", fallback: 'break.jpeg' ) %>
+      <% img_large = attachment_url(report, :image, :fill, 500, 500, format: "jpg", fallback: 'break.png') %>
       <%= link_to image_tag(img_thumb, title: report.created_at.to_s), img_large, data: { gallery: '' } %>
     <% end %>
   <% end %>
