@@ -28,6 +28,8 @@ source 'https://rubygems.org'
   gem 'authy'
   gem 'open_uri_redirections'
   gem 'sendgrid', '~> 1.2', '>= 1.2.4'
+  gem 'griddler', '~> 1.3', '>= 1.3.1'
+  gem 'griddler-sendgrid'
 
 group :production do
   gem 'rails_12factor'

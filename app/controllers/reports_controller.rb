@@ -1,4 +1,5 @@
 class ReportsController < ApplicationController
+  before_action :require_user
   before_action :find_day
   before_action :correct_user_id, except: [:create_from_sms]
   skip_before_filter :verify_authenticity_token, :require_cellphone, :require_quest, only: [:create_from_sms]
@@ -54,7 +55,6 @@ class ReportsController < ApplicationController
   end
 
   def find_day
-    @report = current_user.current_journey.reports.find_or_initialize_by(
-    created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+    @report = current_user.current_report
   end
 end

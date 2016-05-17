@@ -56,6 +56,11 @@ class User < ActiveRecord::Base
     end
   end
 
+  def current_report
+    current_journey.reports.find_or_initialize_by(
+      created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
+
   def grail
     current_journey.quest.grail if current_journey
   end

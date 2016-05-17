@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   post    'start'  => 'journeys#create', as: :journey_create
 
   post    'receive_sms'   => 'reports#create_from_sms'
+  mount_griddler
 
   resources :users, only: [:new, :create, :edit, :update, :show] do
     member do
