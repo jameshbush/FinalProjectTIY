@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     if current_user
       current_user.email_activate
       session[:current_user_id] = current_user.id
-      flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
+      flash[:success] = "Welcome to the website! Your email has been confirmed.
       You are signed in."
     else
       flash[:error] = "Sorry. User does not exist"
