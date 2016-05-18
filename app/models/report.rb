@@ -14,6 +14,6 @@ class Report < ActiveRecord::Base
         surveys[:after] = words[index + 1]
       end
     end
-    return surveys
+    surveys
   end
 end
