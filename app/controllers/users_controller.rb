@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       elsif @user.contact_pref == "email"
         UserNotifier.registration_confirmation(@user).deliver_now
         flash[:success] = "New user #{current_user.name} created please check your email #{@user.email} and click link."
-        redirect_to(:root, notice: 'User created')
+        redirect_to :root
       else
         flash[:success] = "New user #{current_user.name} created"
         redirect_to :journey_new
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     if current_user
       current_user.email_activate
       session[:current_user_id] = current_user.id
-      flash[:success] = "Welcome to the Sample App! Your email has been confirmed.
+      flash[:success] = "Welcome to the website! Your email has been confirmed.
       You are signed in."
     else
       flash[:error] = "Sorry. User does not exist"
@@ -75,12 +75,12 @@ class UsersController < ApplicationController
     authy = Authy::API.register_user(:email => current_user.email, :cellphone => current_user.unamericanized_cell, :country_code => "1")
 
     if authy.ok?
-      current_user.update_attribute(:authy_id, authy.id) # this will give you the user authy id to store it in your database
+      current_user.update_attribute(:authy_id, authy.id)
       send_token_id
     else
-      authy.errors # this will return an error hash
-      flash[:warning] = authy.errors.inspect
-      render :new
+      authy.errors
+      flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
+      render update_path(current_user)
     end
   end
 
@@ -92,8 +92,8 @@ class UsersController < ApplicationController
       redirect_to new_phone_verification_path
     else
       response.errors
-      flash["error"] = response.errors.inspect
-      render :new
+      flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
+      render update_path(current_user)
     end
   end
 end
