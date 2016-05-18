@@ -48,9 +48,10 @@ class User < ActiveRecord::Base
 
   def current_journey
     possible = self.journeys.where(current: true).first
-    if possible.nil? && self.journeys != []
+    if possible.nil? && self.journeys.any?
       self.journeys.last.current = true
       self.journeys.last.save
+      journeys.last
     else
       possible
     end
