@@ -28,7 +28,7 @@ class ReportsController < ApplicationController
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     @twilio_number = ENV['TWILIO_NUMBER']
     img = params['MediaUrl0']
-    txt = params["Body"]
+    txt = Report.parse_text(params["Body"])
     @report.image = open(img, allow_redirections: :all) if img
     @report.survey = txt unless txt.empty?
 
