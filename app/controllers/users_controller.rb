@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       elsif @user.contact_pref == "email"
         UserNotifier.registration_confirmation(@user).deliver_now
         flash[:success] = "New user #{current_user.name} created please check your email #{@user.email} and click link."
-        redirect_to(:root, notice: 'User created')
+        redirect_to :root
       else
         flash[:success] = "New user #{current_user.name} created"
         redirect_to :journey_new
@@ -75,10 +75,10 @@ class UsersController < ApplicationController
     authy = Authy::API.register_user(:email => current_user.email, :cellphone => current_user.unamericanized_cell, :country_code => "1")
 
     if authy.ok?
-      current_user.update_attribute(:authy_id, authy.id) # this will give you the user authy id to store it in your database
+      current_user.update_attribute(:authy_id, authy.id)
       send_token_id
     else
-      authy.errors # this will return an error hash
+      authy.errors
       flash[:warning] = authy.errors.inspect
       render :new
     end
