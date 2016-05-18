@@ -79,8 +79,8 @@ class UsersController < ApplicationController
       send_token_id
     else
       authy.errors
-      flash[:warning] = authy.errors.inspect
-      render :new
+      flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
+      render update_path(current_user)
     end
   end
 
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
       redirect_to new_phone_verification_path
     else
       response.errors
-      flash["error"] = response.errors.inspect
+      flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
       render :new
     end
   end
