@@ -29,8 +29,8 @@ class ReportsController < ApplicationController
     @twilio_number = ENV['TWILIO_NUMBER']
     img = params['MediaUrl0']
     txt = params["Body"]
-    @report.image = open(params["MediaUrl0"], allow_redirections: :all) if img
-    @report.survey = params["Body"] unless txt.empty?
+    @report.image = open(img, allow_redirections: :all) if img
+    @report.survey = txt unless txt.empty?
 
     if @report.save
       @client.messages.create(
