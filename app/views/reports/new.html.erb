@@ -23,6 +23,7 @@
         </div>
       <% end %>
       <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
+      <%= f.input :postsurvey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
       <%= f.button :submit %>
     <% end %>
   </div>

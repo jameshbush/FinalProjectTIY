@@ -51,7 +51,7 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:survey, :image)
+    params.require(:report).permit(:survey, :image, :postsurvey)
   end
 
   def find_day
