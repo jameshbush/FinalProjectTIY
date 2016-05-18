@@ -93,7 +93,7 @@ class UsersController < ApplicationController
     else
       response.errors
       flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
-      render :new
+      render update_path(current_user)
     end
   end
 end
