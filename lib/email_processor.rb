@@ -1,4 +1,6 @@
 class EmailProcessor
+  skip_before_filter :verify_authenticity_token, :require_cellphone, :require_quest, :require_email_confirmation
+
   def initialize(email)
     @email = email
   end
