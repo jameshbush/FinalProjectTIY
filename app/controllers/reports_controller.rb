@@ -30,8 +30,8 @@ class ReportsController < ApplicationController
     img = params['MediaUrl0']
     txt = Report.parse_text(params["Body"])
     @report.image = open(img, allow_redirections: :all) if img
-    @report.survey = txt[:before] unless txt[:before]
-    @report.postsurvey = txt[:after] unless txt[:after]
+    @report.survey = txt[:before] if txt[:before]
+    @report.postsurvey = txt[:after] if txt[:after]
 
     if @report.save
       @client.messages.create(

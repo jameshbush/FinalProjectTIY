@@ -11,7 +11,8 @@ class EmailProcessor
     img = @email.attachments.first
     txt = Report.parse_text(@email.body)
     report.image  = img if img
-    report.survey = txt if txt
+    report.survey = txt[:before] if txt[:before]
+    report.postsurvey = txt[:after] if txt[:after]
     report.save!
   end
 end
