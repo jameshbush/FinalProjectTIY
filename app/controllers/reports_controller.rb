@@ -31,7 +31,7 @@ class ReportsController < ApplicationController
     txt = Report.parse_text(params["Body"])
     @report.image = open(img, allow_redirections: :all) if img
     @report.survey = txt[:before] unless txt[:before].empty?
-    @report.postsurvey = txt[:after] unless text[:after].empty?
+    @report.postsurvey = txt[:after] unless txt[:after].empty?
 
     if @report.save
       @client.messages.create(
