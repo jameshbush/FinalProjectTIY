@@ -18,7 +18,7 @@
       <%= f.attachment_field :image, as: :file %>
       <% if @report.image %>
         <div class="upload-img">
-          <h4><%= "Overwrite current image?" %></h4>
+          <h4>Overwrite current image?</h4>
           <%= image_tag attachment_url( @report, :image, :fill, 200, 200, format: "jpg") %>
         </div>
       <% end %>
