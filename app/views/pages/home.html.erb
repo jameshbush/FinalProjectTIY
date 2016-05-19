@@ -1,28 +1,13 @@
-<div class="wide">
-  <div class="row">
-    <div class="col-xs-4 col-xs-offset-4 logo"><h1>hAppen</h1></div>
-  </div>
-  <div class="row">
-    <div class="col-12-md">
-      <h3 class="text-center logo">Photo Or It Didn't Happen. Make It Happen.</h3>
-    </div>
-  </div>
-</div>
-
-
 <div class="container">
   <div class="text-center">
-    <h1>Content</h1>
+    <h1>Problem</h1>
   </div>
-</div><!-- /.container -->
-
-
-
+</div>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <p>
-      The problem with most life hacks and self help books is that they promise instant results, but lasting change requires repetition, practice, and consistency.
+      The problem with most "life hacks" and self help programs is that they promise instant results, however lasting change requires repetition, practice, and consistency.
     </p>
   </div>
 </div>
@@ -43,6 +28,12 @@
   </div>
 </div>
 
+<div class="container">
+  <div class="text-center">
+    <h1>Solution</h1>
+  </div>
+</div>
+
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <p>
@@ -54,7 +45,24 @@
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <p>
+      Amy Cuddy's reasearch at Harvard Business School shows people can significantly increase testosterone levels by acting confident for two minutes per day.
+    </p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
       Two minutes of focused daily practice is enough to alter your biochemistry.
     </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% unless current_user %>
+      <%= link_to("Sign Up Today!", signup_path, class: "btn btn-primary btn-lg pull-right") %>
+    <% end %>
   </div>
 </div>
