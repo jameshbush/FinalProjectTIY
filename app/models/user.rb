@@ -45,15 +45,17 @@ class User < ActiveRecord::Base
   scope :prefer_phone_scope, -> { where(contact_pref: "phone") }
   scope :prefer_email_scope, -> { where(contact_pref: "email") }
 
-  def current_journey
+  def find_current_journey
     possible = self.journeys.where(current: true).first
     if possible.nil? && self.journeys.any?
-      self.journeys.last.current = true
-      self.journeys.last.save
-      journeys.last
+      self.journeys.last.update_attribute(:current, true)
     else
       possible
     end
+  end
+
+  def current_journey
+    @possible ||= find_current_journey
   end
 
   def new_journey
@@ -69,8 +71,7 @@ class User < ActiveRecord::Base
   end
 
   def set_journey
-    journeys.last.current = true
-    journeys.last.save!
+    journeys.last.update_attribute(:current, true)
   end
 
   def current_report
