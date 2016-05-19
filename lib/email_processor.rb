@@ -1,5 +1,4 @@
 class EmailProcessor
-  skip_before_filter :verify_authenticity_token, :require_cellphone, :require_quest, :require_email_confirmation
 
   def initialize(email)
     @email = email
@@ -11,8 +10,8 @@ class EmailProcessor
     img = @email.attachments.first
     txt = Report.parse_text(@email.body)
     report.image  = img if img
-    report.survey = txt[:before] unless txt[:before]
-    report.postsurvey = txt[:after] unless txt[:after]
+    report.survey = txt[:before] if txt[:before]
+    report.postsurvey = txt[:after] if txt[:after]
     report.save!
   end
 end
