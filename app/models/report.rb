@@ -1,6 +1,6 @@
 class Report < ActiveRecord::Base
   belongs_to :journey
-  attachment :image
+  attachment :image, type: :image
   validates_inclusion_of :survey, in: 1..10, allow_blank: true
 
   def self.parse_text(text)
