@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   EMAIL_REGEX =/\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i
   before_validation { self.email.downcase! }
   validates :email, presence: true,
-                    # uniqueness: true,
+                    uniqueness: true,
                     format: { with: EMAIL_REGEX }
 
   # Phone
