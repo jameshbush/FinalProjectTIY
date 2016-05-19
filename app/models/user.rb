@@ -64,10 +64,7 @@ class User < ActiveRecord::Base
   end
 
   def reset_journeys
-    journeys.each do |j|
-      j.current = false
-      j.save!
-    end
+    journeys.each { |j| j.update_attribute(:current, false) }
   end
 
   def set_journey
