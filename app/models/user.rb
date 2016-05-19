@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: EMAIL_REGEX }
+  validates :confirmation_token, uniqueness: true
 
   # Phone
   require 'phone'
@@ -64,10 +65,7 @@ class User < ActiveRecord::Base
   end
 
   def reset_journeys
-    journeys.each do |j|
-      j.current = false
-      j.save!
-    end
+    journeys.each { |j| j.update_attribute(:current, false) }
   end
 
   def set_journey
