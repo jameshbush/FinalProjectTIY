@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: EMAIL_REGEX }
-  validates :confirm_token, uniqueness: true
+  validates :confirm_token, uniqueness: true, unless: -> { confirm_token.nil? }
 
   # Phone
   require 'phone'
@@ -81,8 +81,12 @@ class User < ActiveRecord::Base
     current_journey.quest.grail if current_journey
   end
 
-  def report_due?
-    !current_journey.reports.find_by(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  def active_report
+    current_journey.reports.find_by(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
+  end
+
+  def report_due
+    !active_report
   end
 
   def photo_due?
@@ -90,7 +94,7 @@ class User < ActiveRecord::Base
   end
 
   def has_current_journey?
-    journeys.select { |j| j.current == true }.count > 0
+    journeys.select { |j| j.current == true }.any?
   end
 
   def unamericanized_cell
