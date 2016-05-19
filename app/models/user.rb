@@ -20,8 +20,7 @@ class User < ActiveRecord::Base
   # Phone
   require 'phone'
   before_validation :format_cellphone
-  validates_presence_of :cellphone,        if: -> { contact_pref == 'phone' }
-  validates :cellphone, uniqueness: :true, if: -> { contact_pref == 'phone' }
+  validates :cellphone, uniqueness: :true, unless: -> { cellphone.blank? }
 
   # Contact Preference
   before_save { self.contact_pref.downcase! }
