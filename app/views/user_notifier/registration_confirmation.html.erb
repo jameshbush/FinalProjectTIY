@@ -1,14 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    <h3>Hello, <%= @user.name %>!</h3>
-    <p>Thanks for joining. I hope you enjoy my habit development app.</p>
+<h3>Hello, <%= @user.name %>!</h3>
+<p>Thanks for joining. I hope you enjoy my habit development app.</p>
 
-    <p>To confirm your registration click the URL below.</p>
-    
-    <p><%= confirm_email_user_url(@user.confirm_token) %></p>
-  </body>
-</html>
+<p>To confirm your registration click the URL below.</p>
+
+<p><%= confirm_email_user_url(@user.confirm_token) %></p>

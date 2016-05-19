@@ -15,9 +15,9 @@ quests.each { |g, d| Quest.create(grail: g, description: d) } if Quest.count < 1
 # Create User
 user = User.find_by(name: "james")
 unless user
-  user = User.create(name: "james", email: "james@example.com",
-                     contact_pref: "phone", cellphone: "555-555-5555",
-                     password: "123123", password_confirmation: "123123")
+  user = User.create(name: ENV["SEED_NAME"], email: ENV["SEED_EMAIL"],
+                     contact_pref: "phone", cellphone: ENV["SEED_CELL"],
+                     password: ENV["SEED_PW"], password_confirmation: ENV["SEED_PW"])
 end
 
 # Create Journey
