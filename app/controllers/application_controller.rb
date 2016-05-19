@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_email_confirmation
-    if current_user.email_verified.nil?
+    unless current_user.email_verified
       flash[:warning] = "We emailed #{current_user.email} to verify your account."
       redirect_to :root
     end
