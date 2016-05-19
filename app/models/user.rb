@@ -67,8 +67,7 @@ class User < ActiveRecord::Base
   end
 
   def set_journey
-    journeys.last.current = true
-    journeys.last.save!
+    journeys.last.update_attribute(:current, true)
   end
 
   def current_report
