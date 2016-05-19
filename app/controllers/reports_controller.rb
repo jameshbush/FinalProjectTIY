@@ -37,7 +37,7 @@ class ReportsController < ApplicationController
       @client.messages.create(
         from: @twilio_number,
         to: current_user.cellphone,
-        body: "We got the#{' img' if img}#{' &' if(img && txt)}#{' survey' unless txt.empty?}."
+        body: "We got the#{' img' if img}#{' &' if(img && txt)}#{' survey' if txt[:before] || txt[:after]}."
       )
     else
       @client.messages.create(

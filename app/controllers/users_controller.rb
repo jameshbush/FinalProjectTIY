@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     response = Authy::API.request_sms(:id => current_user.authy_id)
 
     if response.ok?
-      flash[:success] = "User '#{current_user.name}' created"
+      flash[:success] = "User New account created for #{user.contact_pref == "cellphone" ? user.cellphone : user.email} created"
       redirect_to new_phone_verification_path
     else
       response.errors
