@@ -1,0 +1,46 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+  p {
+    font-size: 18px;
+  }
+}
+
+body,html {
+  height: 100%;
+}
+
+.navbar {
+  border-radius: 0 !important;
+}
+
+// Hero Img
+
+.wide {
+  width:100%;
+  height:300px;
+  background-image: image-url("happy-conf.jpeg");
+  background-size:cover;
+  margin-top: -30px;
+}
+
+.wide img {
+  width:100%;
+}
+
+.logo {
+  color:#fff;
+  font-weight:800;
+  font-size:14pt;
+  padding:25px;
+  text-align:center;
+}
+
+.line {
+  padding-top:20px;
+  white-space:no-wrap;
+  overflow:hidden;
+  text-align:center;
+}

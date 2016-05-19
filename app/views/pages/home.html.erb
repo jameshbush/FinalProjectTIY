@@ -1,4 +1,68 @@
-<h1 class="text-center">Hello World!</h1>
-<% 3.times do %>
-  <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. </p>
-<% end %>
+<div class="container">
+  <div class="text-center">
+    <h1>Problem</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      The problem with most "life hacks" and self help programs is that they promise instant results, however lasting change requires repetition, practice, and consistency.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      Your body strengthens by consistent exercise. Your mind stabilizes with frequent meditation.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      These observations fly in the face of our buy-now-click-bate-there's-a-pill-for-that culture. hAppen solves this modern problem. It creates space to document your practice.
+    </p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="text-center">
+    <h1>Solution</h1>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      Happyiness and confidence are skills you can develop with consistent practice.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      Amy Cuddy's reasearch at Harvard Business School shows people can significantly increase testosterone levels by acting confident for two minutes per day.
+    </p>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      Two minutes of focused daily practice is enough to alter your biochemistry.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% unless current_user %>
+      <%= link_to("Sign Up Today!", signup_path, class: "btn btn-primary btn-lg pull-right") %>
+    <% end %>
+  </div>
+</div>
