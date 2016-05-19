@@ -1,17 +1,9 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
-  </head>
-  <body>
-    -- Reply ABOVE THIS LINE --
-    <h3>Hey <%= @user.name %>,</h3>
-    <p>We are waiting for your report. Don't break the image-chain!</p>
-    <h4>To email a report: </h4>
-    <p>Reply with a number from 1 to 10 and attach a picture.</p>
-    <h4>To upload online:</h4>
-    <p>
-      click <%= link_to 'here', new_user_journey_report_url(@user, @user.current_journey) %>.
-    </p>
-  </body>
-</html>
+-- Reply ABOVE THIS LINE --
+<h3>Hey <%= @user.name %>,</h3>
+<p>We are waiting for your report. Don't break the image-chain!</p>
+<h4>To email a report: </h4>
+<p>Reply with a number from 1 to 10 and attach a picture.</p>
+<h4>To upload online:</h4>
+<p>
+  click <%= link_to 'here', new_user_journey_report_url(@user, @user.current_journey) %>.
+</p>
