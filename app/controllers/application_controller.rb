@@ -1,18 +1,14 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   helper_method :dude_wheres_my_record
-  before_action :require_email_confirmation, except: [:home, :new, :create]
-  before_action :require_cellphone, except: [:new, :create, :edit, :update, :destroy, :home]
-  before_action :require_quest, except: [:new, :create, :edit, :update, :destroy, :home]
+  before_action :require_email_confirmation, except: [:new, :create]
+  before_action :require_cellphone,          except: [:new, :create, :edit, :update, :destroy]
+  before_action :require_quest,              except: [:new, :create, :edit, :update, :destroy]
 
   include LoginsHelper
   include ReportsHelper
   include JourneysHelper
   include UsersHelper
-
-  def home
-    render 'pages/home'
-  end
 
   def dude_wheres_my_record
     redirect_to current_user if params[:current_user_id]
