@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true,
                     uniqueness: true,
                     format: { with: EMAIL_REGEX }
+  validates :confirmation_token, uniqueness: true
 
   # Phone
   require 'phone'
