@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
     current_journey.reports.find_by(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
-  def report_due
+  def report_due?
     !active_report
   end
 
