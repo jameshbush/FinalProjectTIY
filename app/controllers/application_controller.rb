@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_quest
-    if current_user && current_user.current_journey.nil?
+    if current_user && (current_user.current_journey.nil? || current_user.current_journey.quest.nil?)
       flash[:warning] = "Please select a quest."
       redirect_to new_user_journey_path(current_user) and return
     end
