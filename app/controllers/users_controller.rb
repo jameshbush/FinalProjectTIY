@@ -15,15 +15,12 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save!
       session[:current_user_id] = @user.id
+      UserNotifier.registration_confirmation(@user).deliver_now
+      flash[:success] = "New user #{@user.name} created please check your email #{@user.email} and click link."
       if @user.contact_pref == "phone"
         register_authy
-      elsif @user.contact_pref == "email"
-        UserNotifier.registration_confirmation(@user).deliver_now
-        flash[:success] = "New user #{current_user.name} created please check your email #{@user.email} and click link."
-        redirect_to :root
       else
-        flash[:success] = "New user #{current_user.name} created"
-        redirect_to :journey_new
+        redirect_to @user
       end
     else
       flash.now[:warning] = "Could not save account. Please see #{"error".pluralize(@user.errors.count)} below"
@@ -88,7 +85,7 @@ class UsersController < ApplicationController
     response = Authy::API.request_sms(:id => current_user.authy_id)
 
     if response.ok?
-      flash[:success] = "User New account created for #{user.contact_pref == "cellphone" ? user.cellphone : user.email} created"
+      flash[:success] = "User New account created for #{@user.contact_pref == "cellphone" ? @user.cellphone : @user.email} created"
       redirect_to new_phone_verification_path
     else
       response.errors
