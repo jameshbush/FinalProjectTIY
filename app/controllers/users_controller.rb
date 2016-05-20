@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_email_confirmation, only: [:new, :create, :confirm_email]
-  skip_before_action :require_quest,              only: [:new, :create, :confirm_email, :show]
+  skip_before_action :require_quest,              only: [:new, :create, :confirm_email]
   before_action :require_cellphone,               only: [:show]
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:show, :edit, :update]
