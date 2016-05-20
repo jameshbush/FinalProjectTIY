@@ -18,12 +18,12 @@ class ApplicationController < ActionController::Base
   def require_quest
     if current_user && current_user.current_journey.nil?
       flash[:warning] = "Please select a quest."
-      redirect_to new_user_journey_path(current_user)
+      redirect_to new_user_journey_path(current_user) and return
     end
   end
 
   def require_cellphone
-    if current_user && current_user.contact_pref == "phone" && current_user.phone_verified.nil?
+    if current_user && !current_user.phone_verified && !current_user.cellphone.blank?
       flash[:warning] = "We need to verify your cellphone number."
       register_authy
     end

@@ -50,9 +50,9 @@ class User < ActiveRecord::Base
     possible = self.journeys.where(current: true).first
     if possible.nil? && self.journeys.any?
       self.journeys.last.update_attribute(:current, true)
-    else
-      possible
+      possible = self.journeys.where(current: true).first
     end
+    possible
   end
 
   def current_journey
@@ -85,7 +85,7 @@ class User < ActiveRecord::Base
     current_journey.reports.find_by(created_at: Time.zone.now.beginning_of_day..Time.zone.now.end_of_day)
   end
 
-  def report_due
+  def report_due?
     !active_report
   end
 

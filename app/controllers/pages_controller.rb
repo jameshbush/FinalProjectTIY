@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def home
-    render 'home'
+    require_quest if current_user
   end
 end

@@ -26,11 +26,6 @@ end
 
 task reprimand: :environment do
   User.all.each do |user|
-    # if user.report_due || user.photo_due?
-    #   File.open("#{Rails.root}/app/assets/images/break.png", "rb") do |file|
-    #     user.current_report.image = file
-    #   end
     user.current_report.save!
-    # end
   end
 end
