@@ -5,6 +5,5 @@ class PagesController < ApplicationController
 
   def home
     require_quest if current_user
-    render 'home'
   end
 end
