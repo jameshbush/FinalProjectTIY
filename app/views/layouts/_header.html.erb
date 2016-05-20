@@ -40,7 +40,7 @@
             </ul>
           </li>
           <li>
-            <%= link_to @user.report_due ? "Create Today's Report" : "Update Today's Report",
+            <%= link_to current_user.report_due ? "Create Today's Report" : "Update Today's Report",
               new_user_journey_report_path(current_user, active_journey)
             %>
             </li>
