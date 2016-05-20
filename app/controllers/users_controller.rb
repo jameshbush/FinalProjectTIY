@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_email_confirmation, only: [:new, :create, :confirm_email]
   skip_before_action :require_quest,              only: [:new, :create, :confirm_email]
+  before_action :require_cellphone,               only: [:show]
   before_action :disallow_user, only: [:new, :create]
   before_action :require_user,  only: [:show, :edit, :update]
   before_action :get_user,      only: [:show, :edit, :update]
@@ -30,15 +31,22 @@ class UsersController < ApplicationController
 
   def show
     @reports = active_journey.reports
+    survey_data =      { name: 'Survey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.survey } }.reduce({}, :merge) }
+    postsurvey_data =  { name: 'PostSurvey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.postsurvey } }.reduce({}, :merge) }
+    @survey_data = [survey_data, postsurvey_data]
   end
 
   def edit
   end
 
   def update
+    email = @user.email
+    cellphone = @user.cellphone
     if @user.update(user_params)
       flash[:success] = "User #{current_user.name} updated"
       redirect_to @user
+      @user.update_attribute(@user.phone_verified, false) unless @user.cellphone == cellphone || @user.cellphone == ""
+      @user.update_attribute(@user.email_verified, false) unless @user.email == email || @user.email == ""
     else
       flash.now[:warning] = "Could not save account. Please see #{"error".pluralize(@user.errors.count)} below"
       render :edit
@@ -86,7 +94,7 @@ class UsersController < ApplicationController
     response = Authy::API.request_sms(:id => current_user.authy_id)
 
     if response.ok?
-      flash[:success] = "User New account created for #{@user.contact_pref == "cellphone" ? @user.cellphone : @user.email} created"
+      flash[:success] = "User New account created for #{current_user.contact_pref == "cellphone" ? current_user.cellphone : current_user.email} created"
       redirect_to new_phone_verification_path
     else
       response.errors

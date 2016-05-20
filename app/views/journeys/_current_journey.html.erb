@@ -2,11 +2,11 @@
 
 <h2 class="text-center"><%= current_user.grail.capitalize %> Over Time</h2>
 <%= line_chart @survey_data,
-  colors: ["#6495ed", "#999"],
+  colors: ["salmon", "#6495ed"],
   width: "100%", height: "20em",
-  label: "Happyness",
-  min: 0, max: 10,
-  xtitle: "Time", ytitle: "Happyness",
+  label: current_user.grail.capitalize,
+  min: 1, max: 10,
+  xtitle: "Time", ytitle: current_user.grail.capitalize,
   discrete: true
 %>
 
