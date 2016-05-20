@@ -50,9 +50,9 @@ class User < ActiveRecord::Base
     possible = self.journeys.where(current: true).first
     if possible.nil? && self.journeys.any?
       self.journeys.last.update_attribute(:current, true)
-    else
-      possible
+      possible = self.journeys.where(current: true).first
     end
+    possible
   end
 
   def current_journey
