@@ -30,14 +30,14 @@ class ReportsController < ApplicationController
     img = params['MediaUrl0']
     txt = Report.parse_text(params["Body"])
     @report.image = open(img, allow_redirections: :all) if img
-    @report.survey = txt[:before] if txt[:before]
-    @report.postsurvey = txt[:after] if txt[:after]
+    @report.survey = txt[:pre] if txt[:pre]
+    @report.postsurvey = txt[:post] if txt[:post]
 
     if @report.save
       @client.messages.create(
         from: @twilio_number,
         to: current_user.cellphone,
-        body: "We got the#{' img' if img}#{' &' if(img && txt)}#{' survey' if txt[:before] || txt[:after]}."
+        body: "We got the:\n#{'- img' if img}\n#{'- survey' if txt[:pre]}\n#{'- postsurvey' if txt[:post]}"
       )
     else
       @client.messages.create(

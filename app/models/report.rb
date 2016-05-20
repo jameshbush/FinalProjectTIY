@@ -9,9 +9,9 @@ class Report < ActiveRecord::Base
     words.each_with_index do |word, index|
       word.downcase!
       if word == 'b' || word == 'before'
-        surveys[:before] = words[index + 1]
+        surveys[:pre] = words[index + 1]
       elsif word == 'a' || word == 'after'
-        surveys[:after] = words[index + 1]
+        surveys[:post] = words[index + 1]
       end
     end
     surveys
