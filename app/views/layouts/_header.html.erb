@@ -19,22 +19,16 @@
           <li><%= link_to "Profile", user_path(current_user) %></li>
         <% end %>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">Separated link</a></li>
-            <li role="separator" class="divider"></li>
-            <li><a href="#">One more separated link</a></li>
+            <li><a href="#">Upload Text Message</a></li>
+            <li><a href="#">Upload Email</a></li>
           </ul>
         </li>
       </ul>
 
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
-          <li><%= link_to "Logout", logout_path %></li>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span class="caret"></span></a>
             <ul class="dropdown-menu">
@@ -42,14 +36,14 @@
               <li><%= link_to "Edit", edit_user_path(current_user) %></li>
               </li>
               <li role="separator" class="divider"></li>
-              <li><a href="#">Separated link</a></li>
+              <li><%= link_to "Logout", logout_path %></li>
             </ul>
           </li>
-          <li>          <%= link_to @user.report_due ? "Create Today's Report" : "Update Today's Report",
-                      new_user_journey_report_path(current_user, active_journey),
-                      class: "btn btn-primary btn-sm"
-                    %>
-</li>
+          <li>
+            <%= link_to @user.report_due ? "Create Today's Report" : "Update Today's Report",
+              new_user_journey_report_path(current_user, active_journey)
+            %>
+            </li>
         <% else %>
           <li><%= link_to "Login", login_path %></li>
           <li><%= link_to "Signup", signup_path %></li>
