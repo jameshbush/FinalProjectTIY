@@ -29,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @reports = active_journey.reports
   end
 
   def edit

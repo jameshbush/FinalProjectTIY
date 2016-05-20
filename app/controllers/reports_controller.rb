@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
 
   def create
     if @report.update_attributes(report_params)
-      redirect_to user_journey_path(id: current_user.id)
+      redirect_to current_user
     else
       render :create
     end
@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
 
   def update
     if @report.update_attributes(report_params)
-      redirect_to user_journey_path
+      redirect_to current_user
     else
       render :update
     end

@@ -3,13 +3,7 @@
   <p class="lead"><%= "You are on the #{current_user.grail.capitalize} track!"%></p>
   <hr class="m-y-2">
   <p class="lead">
-    <%= link_to @user.report_due ? "Create Today's Report" : "Update Today's Report",
-      new_user_journey_report_path(current_user, active_journey),
-      class: "btn btn-primary btn-lg"
-    %>
-    <%= link_to "Current Journey",
-      user_journey_path(current_user, active_journey),
-      class: "btn btn-primary btn-lg"
-    %>
   </p>
 </div>
+
+<%= render 'journeys/current_journey' %>

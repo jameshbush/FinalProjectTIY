@@ -40,15 +40,16 @@
             <ul class="dropdown-menu">
               <li><a href="<%= user_path(current_user) %>">Show</a></li>
               <li><%= link_to "Edit", edit_user_path(current_user) %></li>
-              <% if current_user.has_current_journey? %>
-                <li><%= link_to "Current Journey",
-                  user_journey_path(current_user, active_journey) %>
-              <% end %>
               </li>
               <li role="separator" class="divider"></li>
               <li><a href="#">Separated link</a></li>
             </ul>
           </li>
+          <li>          <%= link_to @user.report_due ? "Create Today's Report" : "Update Today's Report",
+                      new_user_journey_report_path(current_user, active_journey),
+                      class: "btn btn-primary btn-sm"
+                    %>
+</li>
         <% else %>
           <li><%= link_to "Login", login_path %></li>
           <li><%= link_to "Signup", signup_path %></li>
