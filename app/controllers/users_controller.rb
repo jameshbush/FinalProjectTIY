@@ -31,7 +31,7 @@ class UsersController < ApplicationController
 
   def show
     @reports = active_journey.reports
-    survey_data =      { name: 'Survey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.survey } }.reduce({}, :merge) }
+    survey_data =      { name: 'PreSurvey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.survey } }.reduce({}, :merge) }
     postsurvey_data =  { name: 'PostSurvey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.postsurvey } }.reduce({}, :merge) }
     @survey_data = [survey_data, postsurvey_data]
   end

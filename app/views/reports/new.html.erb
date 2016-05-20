@@ -1,20 +1,19 @@
 <div class="row">
   <div class="col-md-12">
-    <h2 class="text-center">How do you Feel?</h2>
+    <h2 class="text-center">Daily Report</h2>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
-    <ul>
-      <li><h3>First, do the action for 2 minutes.</h3></li>
-      <li><h3>Second, take a picture.</h3></li>
-      <li><h3>Third, rate how you feel from 1 to 10.</h3></li>
-    </ul>
   </div>
 </div>
 <div class="row">
   <div class="col-md-12">
     <%= simple_form_for [current_user, active_journey, @report] do |f| %>
+    <h3>First, record your current level.</h3>
+    <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
+    <h3>Second, stop everything and do the thing for 2 minutes.</h3>
+    <h3>Third, take and upload a picture.</h3>
       <%= f.attachment_field :image, as: :file %>
       <% if @report.image %>
         <div class="upload-img">
@@ -22,7 +21,7 @@
           <%= image_tag attachment_url( @report, :image, :fill, 200, 200, format: "jpg") %>
         </div>
       <% end %>
-      <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
+      <h3>Fourth, rate how you feel from 1 to 10.</h3>
       <%= f.input :postsurvey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
       <%= f.button :submit %>
     <% end %>
