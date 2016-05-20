@@ -45,8 +45,8 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       flash[:success] = "User #{current_user.name} updated"
       redirect_to @user
-      @user.update_attribute(@user.phone_verified, false) unless @user.cellphone == cellphone || @user.cellphone == ""
-      @user.update_attribute(@user.email_verified, false) unless @user.email == email || @user.email == ""
+      @user.update_attribute(:phone_verified, false) unless(@user.cellphone == cellphone || @user.cellphone == "")
+      @user.update_attribute(:email_verified, false) unless(@user.email == email || @user.email == "")
     else
       flash.now[:warning] = "Could not save account. Please see #{"error".pluralize(@user.errors.count)} below"
       render :edit
