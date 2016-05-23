@@ -13,7 +13,7 @@
 <h2 class="text-center">Pictures of <%= current_user.grail.capitalize %></h2>
 <div id="links">
   <% @reports.each do |report| %>
-    <% img_thumb = attachment_url(report, :image, :fill, 140, 140, format: "jpg", fallback: 'break.jpeg') %>
+    <% img_thumb = attachment_url(report, :image, :fill, 140, 140, format: "jpg", fallback: 'break.png') %>
     <% img_large = attachment_url(report, :image, :fill, 500, 500, format: "jpg", fallback: 'break.png') %>
     <%= link_to image_tag(img_thumb, title: report.created_at.to_s), img_large, data: { gallery: '' } %>
   <% end %>
