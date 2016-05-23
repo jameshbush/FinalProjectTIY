@@ -9,7 +9,7 @@
 </div>
 <div class="row">
   <div class="col-md-12">
-    <%= simple_form_for [current_user, active_journey, @report] do |f| %>
+    <%= simple_form_for [current_user, current_user.current_journey, @report] do |f| %>
     <h3>First, record your current level.</h3>
     <%= f.input :survey, as: :radio_buttons, collection: (1..10).to_a.reverse! %>
     <h3>Second, stop everything and do the thing for 2 minutes.</h3>
