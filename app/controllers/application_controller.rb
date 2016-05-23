@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
   before_action :require_quest,              except: [:new, :create, :edit, :update, :destroy]
 
   include LoginsHelper
-  include ReportsHelper
-  include JourneysHelper
   include UsersHelper
 
   def dude_wheres_my_record
