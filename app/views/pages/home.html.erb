@@ -1,3 +1,19 @@
+<div class="headlines">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h3 class="text-center">
+        Daily practice can change your biochemistry.
+      </h3>
+      <h3 class="text-center">
+        It leads to more positive outcomes in your life.
+      </h3>
+      <h3 class="text-center">
+        It's not merely happenstance. It's science.
+      </h3>
+    </div>
+  </div>
+</div>
+
 <div class="container">
   <div class="text-center">
     <h1>Problem</h1>
@@ -12,33 +28,9 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <p>
-      Your body strengthens from regular exercise. Your mind stabilizes with frequent meditation.
-    </p>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <p>
-      These observations fly in the face of our buy-now-click-bait-there's-a-pill-for-that culture. hAppen solves this modern problem. It creates space to document your practice.
-    </p>
-  </div>
-</div>
-
 <div class="container">
   <div class="text-center">
     <h1>Solution</h1>
-  </div>
-</div>
-
-<div class="row">
-  <div class="col-md-8 col-md-offset-2">
-    <p>
-      Happiness and confidence are skills you can develop with consistent practice.
-    </p>
   </div>
 </div>
 
@@ -50,17 +42,43 @@
   </div>
 </div>
 
-
 <div class="row">
   <div class="col-md-8 col-md-offset-2">
     <h3 class="text-center">
-      Daily practice can change your biochemistry.
+      You can become happier and more confident with practice.
     </h3>
-    <h3 class="text-center">
-      This leads to more positive outcomes in your life.
-    </h3>
-    <h3 class="text-center">
-      It's not merely happenstance. It's science.
-    </h3>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      Your body strengthens from regular exercise. Your mind stabilizes with frequent meditation.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-4 col-xs-6 col-md-offset-2 pad-below">
+    <%= image_tag "workout.jpeg", class: ["img-responsive", "img-rounded"] %>
+  </div>
+  <div class="col-md-4 col-xs-6">
+    <%= image_tag "thailand-buddhists-monks.jpeg", class: ["img-responsive", "img-rounded"] %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <p>
+      This philosophy contradicts our buy-now-click-bait-there's-a-pill-for-that culture. hAppen solves this modern problem. It creates space to document your daily practice.
+    </p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-10">
+    <% unless current_user %>
+      <%= link_to("Sign Up Today!", signup_path, class: "btn btn-primary btn-lg pull-right", id: "sign-up") %>
+    <% end %>
   </div>
 </div>
