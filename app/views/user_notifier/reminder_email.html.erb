@@ -2,11 +2,12 @@
 <h3>Hey <%= @user.name %>,</h3>
 <p>We are waiting for your report. Don't break the image-chain!</p>
 
-<h4>To email a report: </h4>
+<h4>To Email a Report: </h4>
 <p>Reply using this format "b 1 a 10"</p>
-<p>attach a picture.</p>
+<p>Where "b 1" measures your before exercise sentiment and "a 10" is your post-exercise survey.</p>
+<p>Finally, attach a picture.</p>
 
-<h4>To upload online:</h4>
+<h4>To Upload Online:</h4>
 <p>
   click <%= link_to 'here', new_user_journey_report_url(@user, @user.current_journey) %>.
 </p>
