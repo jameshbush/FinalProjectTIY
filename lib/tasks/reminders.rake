@@ -1,4 +1,4 @@
-notification = "You should think about doing your exercise."
+notification = "You should think about doing your exercise. Find sms upload instructions at happenstance.herokuapp.com/text-guide."
 
 def send_message(phone_number, alert_message)
 

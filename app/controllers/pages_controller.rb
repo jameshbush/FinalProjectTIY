@@ -6,4 +6,12 @@ class PagesController < ApplicationController
   def home
     require_quest if current_user
   end
+
+  def sms_guide
+    require_quest if current_user
+  end
+
+  def email_guide
+    require_quest if current_user
+  end
 end

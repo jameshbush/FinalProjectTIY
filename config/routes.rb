@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root    'pages#home', as: :root
+  get     'text-guide'  => 'pages#sms_guide',   as: :sms_guide
+  get     'email-guide' => 'pages#email_guide', as: :email_guide
 
   get     'signup'    => 'users#new', as: :signup
 
