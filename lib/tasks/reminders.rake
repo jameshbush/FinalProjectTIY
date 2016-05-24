@@ -1,4 +1,4 @@
-notification = "You should think about doing your exercise."
+notification = "You should think about doing your exercise. Read the Upload Text Guide."
 
 def send_message(phone_number, alert_message)
 
