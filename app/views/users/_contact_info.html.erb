@@ -1,4 +1,4 @@
 <%= f.input :email, placeholder: 'email@google.com' %>
-<%= f.input :cellphone, label_html: { class: 'user_phone' }, placeholder: 'US Phone #' %>
+<%= f.input :cellphone, label_html: { class: 'user_phone' }, placeholder: 'US Phone #', label: "Phone registration required to upload practice survey with sms" %>
 <%= f.input :contact_pref, as: :radio_buttons,
-collection: ["Email", "Phone", "Opt-out"] %>
+collection: ["Email", "Phone", "Opt-out"], label: "Select how you want reminders about daily practice" %>
