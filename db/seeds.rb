@@ -79,3 +79,58 @@ report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 10,
 report.image = File.open("lib/seed_imgs/may10.jpeg")
 report.survey = 7
 report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 11, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may11.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 12, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may12.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 13, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may13.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 14, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may14.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 15, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may15.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 16, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may16.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 17, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may17.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 18, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may18.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 19, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may19.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 22, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may22.jpeg")
+report.survey = 7
+report.save!
+
+report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 23, 12, 1, 0))
+report.image = File.open("lib/seed_imgs/may23.jpeg")
+report.survey = 7
+report.save!
