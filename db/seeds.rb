@@ -137,7 +137,10 @@ report.postsurvey = 8
 report.save!
 
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 20, 12, 1, 0))
+report.save!
+
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 21, 12, 1, 0))
+report.save!
 
 report = journey.reports.find_or_initialize_by(created_at: Time.new(2016, 5, 22, 12, 1, 0))
 report.image = File.open("lib/seed_imgs/may22.jpeg")
