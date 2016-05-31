@@ -65,18 +65,6 @@ class UsersController < ApplicationController
     redirect_to root_url
   end
 
-  private
-
-  def get_user
-    @user = current_user
-  end
-
-  def user_params
-    params.require(:user).permit(
-      :email, :cellphone, :contact_pref, :name,
-      :password, :password_confirmation)
-  end
-
   def register_authy
     authy = Authy::API.register_user(:email => current_user.email, :cellphone => current_user.unamericanized_cell, :country_code => "1")
 
@@ -88,6 +76,18 @@ class UsersController < ApplicationController
       flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
       render update_path(current_user)
     end
+  end
+
+  private
+
+  def get_user
+    @user = current_user
+  end
+
+  def user_params
+    params.require(:user).permit(
+      :email, :cellphone, :contact_pref, :name,
+      :password, :password_confirmation)
   end
 
   def send_token_id
