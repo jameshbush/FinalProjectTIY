@@ -53,31 +53,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def confirm_email
-    if current_user
-      current_user.email_activate
-      session[:current_user_id] = current_user.id
-      flash[:success] = "Welcome to the website! Your email has been confirmed.
-      You are signed in."
-    else
-      flash[:error] = "Sorry. User does not exist"
-    end
-    redirect_to root_url
-  end
-
-  def register_authy
-    authy = Authy::API.register_user(:email => current_user.email, :cellphone => current_user.unamericanized_cell, :country_code => "1")
-
-    if authy.ok?
-      current_user.update_attribute(:authy_id, authy.id)
-      send_token_id
-    else
-      authy.errors
-      flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
-      render update_path(current_user)
-    end
-  end
-
   private
 
   def get_user
@@ -88,18 +63,5 @@ class UsersController < ApplicationController
     params.require(:user).permit(
       :email, :cellphone, :contact_pref, :name,
       :password, :password_confirmation)
-  end
-
-  def send_token_id
-    response = Authy::API.request_sms(:id => current_user.authy_id)
-
-    if response.ok?
-      flash[:success] = "User New account created for #{current_user.contact_pref == "cellphone" ? current_user.cellphone : current_user.email} created"
-      redirect_to new_phone_verification_path
-    else
-      response.errors
-      flash[:warning] = "Check your phone number is correct. If that doesn’t work, our phone authentication could be momentarily disabled. Please signup with email or try again later."
-      render update_path(current_user)
-    end
   end
 end
