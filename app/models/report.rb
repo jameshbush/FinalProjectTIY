@@ -3,6 +3,8 @@ class Report < ActiveRecord::Base
   attachment :image, type: :image
   validates_inclusion_of :survey, in: 1..10, allow_blank: true
 
+  default_scope { order(created_at: :asc) }
+
   def self.parse_text(text)
     words = text.split
     surveys = Hash.new
