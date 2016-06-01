@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @reports = current_user.current_journey.reports
+    @reports = current_user.current_journey.reports.sort_by(&:created_at)
     survey_data =      { name: 'PreSurvey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.survey } }.reduce({}, :merge) }
     postsurvey_data =  { name: 'PostSurvey', data: @reports.map { |r| { r.created_at.to_date.strftime("%B %d, %Y") => r.postsurvey } }.reduce({}, :merge) }
     @survey_data = [survey_data, postsurvey_data]
