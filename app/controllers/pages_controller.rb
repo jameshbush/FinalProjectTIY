@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
   skip_before_action :require_email_confirmation
   skip_before_action :require_quest
+  skip_before_action :require_cellphone
   rescue_from ActiveRecord::RecordNotFound, with: :dude_wheres_my_record
 
   def home
