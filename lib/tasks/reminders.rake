@@ -1,4 +1,4 @@
-notification = "You should think about doing your exercise. Find sms upload instructions at happenstance.herokuapp.com/text-guide."
+notification = "You should think about doing your exercise. Find sms upload instructions at happenstance.herokuapp.com/text-guide"
 
 def send_message(phone_number, alert_message)
 
@@ -26,6 +26,8 @@ end
 
 task reprimand: :environment do
   User.all.each do |user|
+    user.current_report.survey = 1
+    user.current_report.survey = 1
     user.current_report.save!
   end
 end
