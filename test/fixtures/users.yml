@@ -1,10 +1,21 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
+  id: 1
   name: jamie
   email: jamie@acme.org
   cellphone: "+15555555555"
   contact_pref: "phone"
+  phone_verified: true
+  email_verified: true
+  password_digest: "a;sldkfj;asdlkfj;asdlkfj;sdalkjf"
+
+two:
+  id: 2
+  name: amie
+  email: amie@acme.org
+  cellphone: "+12358132134"
+  contact_pref: "email"
   phone_verified: true
   email_verified: true
   password_digest: "a;sldkfj;asdlkfj;asdlkfj;sdalkjf"
