@@ -1,5 +1,5 @@
 # Create Quests
-quests = { "happyness"  => "Become happier with daily smile practice",
+quests = { "happiness"  => "Become happier with daily smile practice",
            "confidence" => "Become more confident with daily power poses",
            "freedom"    => "You choose the challenge" }
 quests.each { |g, d| Quest.create(grail: g, description: d) } if Quest.count < 1

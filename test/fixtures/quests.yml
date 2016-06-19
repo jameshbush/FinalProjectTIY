@@ -1,0 +1,14 @@
+one:
+  id: 1
+  grail: "happiness"
+  description: "Become happier with daily smile practice"
+
+two:
+  id: 2
+  grail: "confidence"
+  description: "Become more confident with daily power poses"
+
+three:
+  id: 3
+  grail: "freedom"
+  description: "You choose the challenge"
