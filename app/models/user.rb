@@ -19,12 +19,18 @@ class User < ActiveRecord::Base
   validates :confirm_token, uniqueness: true, unless: -> { confirm_token.nil? }
 
   # Phone
-  require 'phone'
+  # require 'phone'
   before_validation :format_cellphone
   validates :cellphone, uniqueness: :true, unless: -> { cellphone.blank? }
 
   # Contact Preference
-  before_save { self.contact_pref.downcase! }
+  before_save do
+    self.contact_pref.downcase!
+    self.phone_verified = false if(self.cellphone_changed? || self.cellphone.blank?)
+    self.email_verified =  false if(self.email_changed?)
+    true
+  end
+
   validates :contact_pref, presence: true
 
   # Name

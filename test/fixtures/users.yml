@@ -1,17 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  email: MyString
-  phone: MyString
-  contact_pref: MyString
-  password_digest: MyString
-  endeavor_id: 
-
-two:
-  name: MyString
-  email: MyString
-  phone: MyString
-  contact_pref: MyString
-  password_digest: MyString
-  endeavor_id: 
+  name: jamie
+  email: jamie@acme.org
+  cellphone: "+15555555555"
+  contact_pref: "phone"
+  phone_verified: true
+  email_verified: true
+  password_digest: "a;sldkfj;asdlkfj;asdlkfj;sdalkjf"

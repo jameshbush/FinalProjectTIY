@@ -36,14 +36,18 @@ group :production do
 end
 
 group :development, :test do
-  gem 'byebug'
+  gem 'pry'
+  gem 'pry-rails'
+  gem 'pry-byebug'
   gem 'better_errors'
   gem 'letter_opener', '~> 1.4', '>= 1.4.1'
+end
+
+group :test do
+  gem 'simplecov'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
-  gem 'pry'
-  gem 'pry-rails'
 end

@@ -40,13 +40,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    email = @user.email
-    cellphone = @user.cellphone
     if @user.update(user_params)
-      flash[:success] = "User #{current_user.name} updated"
+      flash[:success] = "User #{@user.name} updated"
       redirect_to @user
-      @user.update_attribute(:phone_verified, false) unless(@user.cellphone == cellphone || @user.cellphone == "")
-      @user.update_attribute(:email_verified, false) unless(@user.email == email || @user.email == "")
     else
       flash.now[:warning] = "Could not save account. Please see #{"error".pluralize(@user.errors.count)} below"
       render :edit
