@@ -1,0 +1,17 @@
+one:
+  id: 1
+  journey_id: 1
+  survey: 1
+  postsurvey: 1
+
+two:
+  id: 2
+  journey_id: 1
+  survey: 2
+  postsurvey: 3
+
+three:
+  id: 3
+  journey_id: 2
+  survey: 5
+  postsurvey: 8

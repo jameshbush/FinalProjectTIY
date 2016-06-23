@@ -3,8 +3,9 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.find(1)
-    @u2 = User.find(2)
   end
+
+  # Basic Tests
 
   test "user has name" do
     assert @user.name == "jamie", "Username incorrect"
@@ -34,6 +35,8 @@ class UserTest < ActiveSupport::TestCase
     refute @user.password_digest.blank?, "User password_digest not working"
   end
 
+  # Validations Tests
+
   test "user password length min is 6 chars" do
     @user.password = @user.password_confirmation = "j" * 5
     assert_not @user.valid?
@@ -47,7 +50,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "user needs unique email" do
-    @user.email = @u2.email
+    @user.email = User.find(2).email
     assert_not @user.valid?
   end
 

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  id: 1
+  quest_id: 1
+  user_id: 1
+  current: true
+
+two:
+  id: 2
+  quest_id: 2
+  user_id: 2
+  current: true

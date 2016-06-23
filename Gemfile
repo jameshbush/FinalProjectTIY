@@ -13,7 +13,6 @@ source 'https://rubygems.org'
   gem 'sdoc',           '~> 0.4.0', group: :doc
   gem 'figaro'
   gem 'simple_form'
-  gem 'paperclip'
   gem 'kaminari'
   gem 'bootstrap-kaminari-views'
   gem 'refile', require: 'refile/rails'

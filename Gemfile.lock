@@ -62,10 +62,6 @@ GEM
     builder (3.2.2)
     byebug (9.0.5)
     chartkick (1.5.1)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.8)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -122,7 +118,6 @@ GEM
       mime-types (>= 1.16, < 4)
     method_source (0.8.2)
     mime-types (2.99.1)
-    mimemagic (0.3.0)
     mini_magick (4.5.1)
     mini_portile2 (2.0.0)
     minitest (5.8.4)
@@ -131,12 +126,6 @@ GEM
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     open_uri_redirections (0.2.1)
-    paperclip (4.3.6)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      cocaine (~> 0.5.5)
-      mime-types
-      mimemagic (= 0.3.0)
     pg (0.18.4)
     phone (1.2.3)
     pry (0.10.3)
@@ -276,7 +265,6 @@ DEPENDENCIES
   kaminari
   letter_opener (~> 1.4, >= 1.4.1)
   open_uri_redirections
-  paperclip
   pg
   phone (~> 1.2, >= 1.2.3)
   pry
