@@ -19,24 +19,23 @@ class User < ActiveRecord::Base
   validates :confirm_token, uniqueness: true, unless: -> { confirm_token.nil? }
 
   # Phone
-  # require 'phone'
   before_validation :format_cellphone
   validates :cellphone, uniqueness: :true, unless: -> { cellphone.blank? }
 
   # Contact Preference
+  validates :contact_pref, presence: true
   before_save do
     self.contact_pref.downcase!
     self.phone_verified = false if(self.cellphone_changed? || self.cellphone.blank?)
-    self.email_verified =  false if(self.email_changed?)
+    self.email_verified = false if(self.email_changed?)
     true
   end
-
-  validates :contact_pref, presence: true
 
   # Name
   before_validation :format_name
   validates :name, format: { without: /\s/ }
 
+  # User Methods
   def self.has_current_journey
     joins(:journeys).where("journeys.current = ?", true)
   end
