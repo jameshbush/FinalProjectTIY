@@ -29,6 +29,7 @@ source 'https://rubygems.org'
   gem 'sendgrid', '~> 1.2', '>= 1.2.4'
   gem 'griddler', '~> 1.3', '>= 1.3.1'
   gem 'griddler-sendgrid'
+  gem "highcharts-rails"
 
 group :production do
   gem 'rails_12factor'
@@ -39,7 +40,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
   gem 'better_errors'
-  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
+  gem 'mailcatcher', '~> 0.6.1'
 end
 
 group :test do
