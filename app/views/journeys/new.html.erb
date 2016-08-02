@@ -1,5 +1,5 @@
 <%= simple_form_for [current_user, @journey] do |f| %>
   <%= f.input :quest, as: :radio_buttons,
-    collection: ["happyness", "confidence", "freedom"] %>
+    collection: ["happiness", "confidence", "freedom"] %>
   <%= f.button :submit %>
 <% end %>

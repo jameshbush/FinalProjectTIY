@@ -13,10 +13,6 @@
       },
       xAxis: {
           type: 'datetime',
-          dateTimeLabelFormats: { // don't display the dummy year
-            month: '%e. %b',
-            year: '%b'
-          },
           title: {
             text: 'Date'
           }
@@ -30,7 +26,7 @@
       },
       tooltip: {
           headerFormat: '<b>{series.name}</b><br>',
-          pointFormat: '{point.x:%e. %b}: {point.y:.2f} m'
+          pointFormat: '{point.x:Day %e}, Value {point.y:.0f}'
       },
       plotOptions: {
           spline: {
@@ -56,6 +52,14 @@
       }]
     });
   });
+
+Highcharts.setOptions({
+  global: {
+    useUTC: false
+  }
+});
+
+
 </script>
 
 <h2 class="text-center">Pictures of <%= current_user.grail.capitalize %></h2>
